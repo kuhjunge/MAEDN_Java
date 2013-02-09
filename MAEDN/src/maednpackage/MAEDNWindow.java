@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent; // Mausevent
 
 public class MAEDNWindow {
 
-	private JFrame frame;
+	private JFrame frmMenschrgereDich;
 
 	/**
 	 * Launch the application.
@@ -22,7 +22,7 @@ public class MAEDNWindow {
 			public void run() {
 				try { // Versuche
 					MAEDNWindow window = new MAEDNWindow(); // Fenster öffnen
-					window.frame.setVisible(true); // Sichtbar machen
+					window.frmMenschrgereDich.setVisible(true); // Sichtbar machen
 				} catch (Exception e) { // Wenn Fehler
 					e.printStackTrace();
 				}
@@ -42,11 +42,12 @@ public class MAEDNWindow {
 	 */
 	private void initialize() {
 		// Der Rahmen der das Gesammte Java Projekt umgibt
-		frame = new JFrame(); // Objekt wird deklariert & initalisiert
-		frame.getContentPane().setBackground(new Color(240, 230, 140)); // HintergrundOrange
-		frame.setBounds(100, 100, 600, 630); // Größe
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Weg bei X
-		frame.getContentPane().setLayout(null);//Layoutmanager
+		frmMenschrgereDich = new JFrame(); // Objekt wird deklariert & initalisiert
+		frmMenschrgereDich.setTitle("Mensch \u00C4rgere Dich Nicht"); // Titel des Fensters
+		frmMenschrgereDich.getContentPane().setBackground(new Color(240, 230, 140)); // HintergrundOrange
+		frmMenschrgereDich.setBounds(100, 100, 600, 630); // Größe
+		frmMenschrgereDich.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Weg bei X
+		frmMenschrgereDich.getContentPane().setLayout(null);//Layoutmanager
 		
 		ImageIcon imgBackground = new ImageIcon(this.getClass().getResource("images/hintergrund.png")); // Spielfeld
 		ImageIcon imgBlau = new ImageIcon(this.getClass().getResource("images/maennchenblau.png")); //Blaue Spielfigur
@@ -59,10 +60,10 @@ public class MAEDNWindow {
 			}
 		});
 		lblMBlue1.setBounds(10, 10, 45, 45); // Startposition
-		frame.getContentPane().add(lblMBlue1); // Und Ferig, ab aufs Spielfeld mit dir
+		frmMenschrgereDich.getContentPane().add(lblMBlue1); // Und Ferig, ab aufs Spielfeld mit dir
 		
 		JLabel lblBackground = new JLabel(imgBackground); // Backgroundimage Zuweisen
 		lblBackground.setBounds(0, 0, 580, 580); // Größe
-		frame.getContentPane().add(lblBackground); // An den Frame anheften
+		frmMenschrgereDich.getContentPane().add(lblBackground); // An den Frame anheften
 	}
 }
