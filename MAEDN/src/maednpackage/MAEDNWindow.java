@@ -49,14 +49,16 @@ public class MAEDNWindow {
 		frmMenschrgereDich.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Weg bei X
 		frmMenschrgereDich.getContentPane().setLayout(null);//Layoutmanager
 		
+		
 		ImageIcon imgBackground = new ImageIcon(this.getClass().getResource("images/hintergrund.png")); // Spielfeld
 		ImageIcon imgBlau = new ImageIcon(this.getClass().getResource("images/maennchenblau.png")); //Blaue Spielfigur
-		
 		final JLabel lblMBlue1 = new JLabel(imgBlau); // Blaue Spielfigur wird Bild zugewiesen
 		lblMBlue1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
 				lblMBlue1.setBounds(lblMBlue1.getBounds().x+5, lblMBlue1.getBounds().y+5, 45, 45); // Setze Spielfigur 5 Schritte weiter
+				Math.random();
+				lblMBlue1.setLocation(MAEDNGame.place(1, 1,MAEDNGame.myRandom(1,40))) ;
 			}
 		});
 		lblMBlue1.setBounds(10, 10, 45, 45); // Startposition
