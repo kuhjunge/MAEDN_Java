@@ -60,7 +60,7 @@ public class MAEDNWindow {
 				//lblMBlue1.setBounds(lblMBlue1.getBounds().x+5, lblMBlue1.getBounds().y+5, 45, 45); // Setze Spielfigur 5 Schritte weiter
 				
 				int i = maedn.zug(2,1);
-				lblMBlue1.setLocation(MAEDNGame.place(2, 1,i)) ;
+				lblMBlue1.setLocation(MADENPositions.place(2, 1,i)) ;
 			}
 		});
 		lblMBlue1.setBounds(10, 10, 45, 45); // Startposition
