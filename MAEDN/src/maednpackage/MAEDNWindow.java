@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 //import java.awt.BorderLayout;
 import java.awt.Color; // Farben
 import java.awt.event.MouseAdapter; // Mausevent
@@ -49,16 +50,17 @@ public class MAEDNWindow {
 		frmMenschaergereDich.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Weg bei X
 		frmMenschaergereDich.getContentPane().setLayout(null);//Layoutmanager
 		
-		
+		final MAEDNGame maedn = new MAEDNGame();
 		ImageIcon imgBackground = new ImageIcon(this.getClass().getResource("images/hintergrund.png")); // Spielfeld
 		ImageIcon imgBlau = new ImageIcon(this.getClass().getResource("images/maennchenblau.png")); //Blaue Spielfigur
 		final JLabel lblMBlue1 = new JLabel(imgBlau); // Blaue Spielfigur wird Bild zugewiesen
 		lblMBlue1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				lblMBlue1.setBounds(lblMBlue1.getBounds().x+5, lblMBlue1.getBounds().y+5, 45, 45); // Setze Spielfigur 5 Schritte weiter
-				Math.random();
-				lblMBlue1.setLocation(MAEDNGame.place(1, 1,MAEDNGame.myRandom(1,40))) ;
+				//lblMBlue1.setBounds(lblMBlue1.getBounds().x+5, lblMBlue1.getBounds().y+5, 45, 45); // Setze Spielfigur 5 Schritte weiter
+				
+				int i = maedn.zug(2,1);
+				lblMBlue1.setLocation(MAEDNGame.place(2, 1,i)) ;
 			}
 		});
 		lblMBlue1.setBounds(10, 10, 45, 45); // Startposition

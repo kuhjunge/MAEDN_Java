@@ -4,6 +4,10 @@ import java.awt.Point;
 
 public class MAEDNGame {
 
+	//Spieler
+	MAEDNSpieler sp2 = new MAEDNSpieler(2);
+	
+	// positionierungen
     private static int figX = 24;
     private static int figY = 24;
     private static int zx = 290;
@@ -21,9 +25,6 @@ public class MAEDNGame {
 	// Funktion gibt die Position der aktuel geklickten farbe zurück
     public static Point place(int farbe, int id, int zahl)
     { // Positionen Ermitteln Spielfeld oder farbenspezifische Positionen
-
-        if (farbe != 1)
-            zahl = convertToFarbe(zahl, farbe);
         if (zahl > 0 && zahl < 41)
         {
             Point[] ort = {
@@ -173,32 +174,10 @@ public class MAEDNGame {
         }
     }
     
-    private static int convertToFarbe(int zahl, int farbe)
+    public int zug(int farbe, int id)
     {
-        if (farbe == 3)
-        {
-            if (zahl > 0 & zahl < 21)
-                zahl = zahl + 20;
-            else if (zahl > 20 & zahl < 41)
-                zahl = zahl - 20;
-        }
-
-        else if (farbe == 2)
-        {
-            if (zahl > 0 & zahl < 31)
-                zahl = zahl + 10;
-            else if (zahl > 30 & zahl < 41)
-                zahl = zahl - 30;
-        }
-
-        else if (farbe == 4)
-        {
-            if (zahl > 0 & zahl < 11)
-                zahl = zahl + 30;
-            else if (zahl > 10 & zahl < 41)
-                zahl = zahl - 10;
-        }
-        return zahl;
+    	sp2.addFigurFort(1, 1);
+    	return sp2.getFigurFort(1);
     }
     
 	public static int myRandom(double low, double high) {
