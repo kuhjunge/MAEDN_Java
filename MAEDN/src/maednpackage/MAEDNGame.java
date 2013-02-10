@@ -4,11 +4,11 @@ import java.awt.Point;
 
 public class MAEDNGame {
 
-    private static int figX = 23;
-    private static int figY = 26;
-    private static int zx = 300;
-    private static int zy = 300;
-    private static int zadd = 54;
+    private static int figX = 24;
+    private static int figY = 24;
+    private static int zx = 290;
+    private static int zy = 290;
+    private static int zadd = 52;
 	
 	/**
 	 * @param args

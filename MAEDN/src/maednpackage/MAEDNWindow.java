@@ -5,14 +5,14 @@ import java.awt.EventQueue;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
+//import java.awt.BorderLayout;
 import java.awt.Color; // Farben
 import java.awt.event.MouseAdapter; // Mausevent
 import java.awt.event.MouseEvent; // Mausevent
 
 public class MAEDNWindow {
 
-	private JFrame frmMenschrgereDich;
+	private JFrame frmMenschaergereDich;
 
 	/**
 	 * Launch the application.
@@ -22,7 +22,7 @@ public class MAEDNWindow {
 			public void run() {
 				try { // Versuche
 					MAEDNWindow window = new MAEDNWindow(); // Fenster öffnen
-					window.frmMenschrgereDich.setVisible(true); // Sichtbar machen
+					window.frmMenschaergereDich.setVisible(true); // Sichtbar machen
 				} catch (Exception e) { // Wenn Fehler
 					e.printStackTrace();
 				}
@@ -42,12 +42,12 @@ public class MAEDNWindow {
 	 */
 	private void initialize() {
 		// Der Rahmen der das Gesammte Java Projekt umgibt
-		frmMenschrgereDich = new JFrame(); // Objekt wird deklariert & initalisiert
-		frmMenschrgereDich.setTitle("Mensch \u00C4rgere Dich Nicht"); // Titel des Fensters
-		frmMenschrgereDich.getContentPane().setBackground(new Color(240, 230, 140)); // HintergrundOrange
-		frmMenschrgereDich.setBounds(100, 100, 600, 630); // Größe
-		frmMenschrgereDich.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Weg bei X
-		frmMenschrgereDich.getContentPane().setLayout(null);//Layoutmanager
+		frmMenschaergereDich = new JFrame(); // Objekt wird deklariert & initalisiert
+		frmMenschaergereDich.setTitle("Mensch \u00C4rgere Dich Nicht"); // Titel des Fensters
+		frmMenschaergereDich.getContentPane().setBackground(new Color(240, 230, 140)); // HintergrundOrange
+		frmMenschaergereDich.setBounds(100, 100, 600, 620); // Größe
+		frmMenschaergereDich.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Weg bei X
+		frmMenschaergereDich.getContentPane().setLayout(null);//Layoutmanager
 		
 		
 		ImageIcon imgBackground = new ImageIcon(this.getClass().getResource("images/hintergrund.png")); // Spielfeld
@@ -62,10 +62,10 @@ public class MAEDNWindow {
 			}
 		});
 		lblMBlue1.setBounds(10, 10, 45, 45); // Startposition
-		frmMenschrgereDich.getContentPane().add(lblMBlue1); // Und Ferig, ab aufs Spielfeld mit dir
+		frmMenschaergereDich.getContentPane().add(lblMBlue1); // Und Ferig, ab aufs Spielfeld mit dir
 		
 		JLabel lblBackground = new JLabel(imgBackground); // Backgroundimage Zuweisen
 		lblBackground.setBounds(0, 0, 580, 580); // Größe
-		frmMenschrgereDich.getContentPane().add(lblBackground); // An den Frame anheften
+		frmMenschaergereDich.getContentPane().add(lblBackground); // An den Frame anheften
 	}
 }
