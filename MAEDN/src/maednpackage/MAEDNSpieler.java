@@ -29,7 +29,7 @@ public class MAEDNSpieler {
 		return sFarbeName;
 	}
 	
-	// Wert der Spielfigur zurück geben
+	// Wert der Spielfigur zurück geben und umwandeln
 	public int getFigurFort(int id)
 	{
 		switch(id)
@@ -47,24 +47,45 @@ public class MAEDNSpieler {
 		}
 	}
 	
+	// Wert der Spielfigur zurück geben
+	private int getFigurFortRaw(int id)
+	{
+		switch(id)
+		{
+		case 1:
+			return sFigur1.getFortschritt();
+		case 2:
+			return sFigur2.getFortschritt();
+		case 3:
+			return sFigur3.getFortschritt();
+		case 4:
+			return sFigur4.getFortschritt();
+		default:
+			return 0;
+		}
+	}
+	
 	// Addiert die angegebenen Schritte zum Fortschritt der Figur
 	public void addFigurFort(int id, int wurf)
 	{
 		//JOptionPane.showMessageDialog(null, wurf);
-		switch(id)
+		if (!checkcollideInside(id,wurf +getFigurFortRaw(id)))
 		{
-		case 1:
-			sFigur1.addFortschritt(wurf);
-			break;
-		case 2:
-			sFigur2.addFortschritt(wurf);
-			break;
-		case 3:
-			sFigur3.addFortschritt(wurf);
-			break;
-		case 4:
-			sFigur4.addFortschritt(wurf);
-			break;
+			switch(id)
+			{
+			case 1:
+				sFigur1.addFortschritt(wurf);
+				break;
+			case 2:
+				sFigur2.addFortschritt(wurf);
+				break;
+			case 3:
+				sFigur3.addFortschritt(wurf);
+				break;
+			case 4:
+				sFigur4.addFortschritt(wurf);
+				break;
+			}
 		}
 	}
 	
@@ -95,6 +116,29 @@ public class MAEDNSpieler {
                 zahl = zahl - 10;
         }
         return zahl;
+    }
+    
+    // Kollisionsdetection im Objekt
+    private boolean checkcollideInside(int id, int value)
+    {
+    	boolean ret = false;
+    	if (id != 1) ret = sFigur1.collision(value);
+    	if (id != 2 && !ret) ret = sFigur2.collision(value);
+    	if (id != 3 && !ret) ret = sFigur3.collision(value);
+    	if (id != 4 && !ret) ret = sFigur4.collision(value);
+    	return ret;
+    }
+    
+    // Kollisionsdetection auserhalb des Objektes
+    private int checkcollide(int zahl)
+    {
+    	int value = convertToFarbe(zahl);
+    	int ret = 0;
+    	if (sFigur1.collision(value)) ret = 1;
+    	if (sFigur2.collision(value)) ret = 2;
+    	if (sFigur3.collision(value)) ret = 3;
+    	if (sFigur4.collision(value)) ret = 4;
+    	return ret;
     }
 	//
 }

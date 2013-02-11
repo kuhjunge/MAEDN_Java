@@ -290,5 +290,23 @@ public class MAEDNWindow {
 		JLabel lblBackground = new JLabel(imgBackground); // Backgroundimage Zuweisen
 		lblBackground.setBounds(0, 0, 580, 580); // Größe
 		frmMenschaergereDich.getContentPane().add(lblBackground); // An den Frame anheften
+		
+		// Aufräumen
+		lblMRed1.setLocation(MADENPositions.place(1, 1,0));
+		lblMRed2.setLocation(MADENPositions.place(1, 2,0));
+		lblMRed3.setLocation(MADENPositions.place(1, 3,0));
+		lblMRed4.setLocation(MADENPositions.place(1, 4,0));
+		lblMBlue1.setLocation(MADENPositions.place(2, 1,0));
+		lblMBlue2.setLocation(MADENPositions.place(2, 2,0));
+		lblMBlue3.setLocation(MADENPositions.place(2, 3,0));
+		lblMBlue4.setLocation(MADENPositions.place(2, 4,0));
+		lblMGreen1.setLocation(MADENPositions.place(3, 1,0));
+		lblMGreen2.setLocation(MADENPositions.place(3, 2,0));
+		lblMGreen3.setLocation(MADENPositions.place(3, 3,0));
+		lblMGreen4.setLocation(MADENPositions.place(3, 4,0));
+		lblMYellow1.setLocation(MADENPositions.place(4, 1,0));
+		lblMYellow2.setLocation(MADENPositions.place(4, 2,0));
+		lblMYellow3.setLocation(MADENPositions.place(4, 3,0));
+		lblMYellow4.setLocation(MADENPositions.place(4, 4,0));
 	}
 }

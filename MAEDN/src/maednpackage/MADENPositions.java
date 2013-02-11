@@ -4,8 +4,8 @@ import java.awt.Point;
 
 public class MADENPositions {
 	// positionierungen
-    private static int figX = 24; // Figur Größe der X Achse
-    private static int figY = 24; // Figur Größe der Y Achse
+    private static int figX = 23; // Figur Größe der X Achse
+    private static int figY = 23; // Figur Größe der Y Achse
     private static int zx = 290; // SpielfeldMitte X Achse
     private static int zy = 290; // SpielfeldMitte Y Achse
     private static int zadd = 52; // Schrittgröße der SpielfeldQuadrate
