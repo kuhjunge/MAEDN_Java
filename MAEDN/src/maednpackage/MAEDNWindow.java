@@ -1,6 +1,9 @@
 package maednpackage;
 
+import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.Point;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,6 +12,11 @@ import javax.swing.JOptionPane;
 import java.awt.Color; // Farben
 import java.awt.event.MouseAdapter; // Mausevent
 import java.awt.event.MouseEvent; // Mausevent
+import java.util.List;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class MAEDNWindow {
 
@@ -64,11 +72,7 @@ public class MAEDNWindow {
 		lblMYellow1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 1;
-				int farbe = 4;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMYellow1.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMYellow1.setLocation(zug(maedn,4,1));
 			}
 		});
 		lblMYellow1.setSize(46, 46); // Größe
@@ -79,11 +83,7 @@ public class MAEDNWindow {
 		lblMYellow2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 2;
-				int farbe = 4;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMYellow2.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMYellow2.setLocation(zug(maedn,4,2));
 			}
 		});
 		lblMYellow2.setSize(46, 46); // Größe
@@ -94,11 +94,7 @@ public class MAEDNWindow {
 		lblMYellow3.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 3;
-				int farbe = 4;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMYellow3.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMYellow3.setLocation(zug(maedn,4,3));
 			}
 		});
 		lblMYellow3.setSize(46, 46); // Größe
@@ -109,11 +105,7 @@ public class MAEDNWindow {
 		lblMYellow4.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 4;
-				int farbe = 4;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMYellow4.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMYellow4.setLocation(zug(maedn,4,4));
 			}
 		});
 		lblMYellow4.setSize(46, 46); // Größe
@@ -125,11 +117,7 @@ public class MAEDNWindow {
 		lblMGreen1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 1;
-				int farbe = 3;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMGreen1.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMGreen1.setLocation(zug(maedn,3,1));
 			}
 		});
 		lblMGreen1.setSize(46, 46); // Größe
@@ -140,11 +128,7 @@ public class MAEDNWindow {
 		lblMGreen2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 2;
-				int farbe = 3;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMGreen2.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMGreen2.setLocation(zug(maedn,3,2));
 			}
 		});
 		lblMGreen2.setSize(46, 46); // Größe
@@ -155,11 +139,7 @@ public class MAEDNWindow {
 		lblMGreen3.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 3;
-				int farbe = 3;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMGreen3.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMGreen3.setLocation(zug(maedn,3,3));
 			}
 		});
 		lblMGreen3.setSize(46, 46); // Größe
@@ -170,11 +150,7 @@ public class MAEDNWindow {
 		lblMGreen4.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 4;
-				int farbe = 3;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMGreen4.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMGreen4.setLocation(zug(maedn,3,4));
 			}
 		});
 		lblMGreen4.setSize(46, 46); // Größe
@@ -186,11 +162,7 @@ public class MAEDNWindow {
 		lblMRed1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 1;
-				int farbe = 1;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMRed1.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMRed1.setLocation(zug(maedn,1,1));
 			}
 		});
 		lblMRed1.setSize(46, 46); // Größe
@@ -201,11 +173,7 @@ public class MAEDNWindow {
 		lblMRed2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 2;
-				int farbe = 1;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMRed2.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMRed2.setLocation(zug(maedn,1,2));
 			}
 		});
 		lblMRed2.setSize(46, 46); // Größe
@@ -216,11 +184,8 @@ public class MAEDNWindow {
 		lblMRed3.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 3;
-				int farbe = 1;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMRed3.setLocation(MADENPositions.place(farbe, id,i)) ;
+
+				lblMRed3.setLocation(zug(maedn,1,3));
 			}
 		});
 		lblMRed3.setSize(46, 46); // Größe
@@ -231,11 +196,8 @@ public class MAEDNWindow {
 		lblMRed4.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 4;
-				int farbe = 1;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMRed4.setLocation(MADENPositions.place(farbe, id,i)) ;
+
+				lblMRed4.setLocation(zug(maedn,1,4));
 			}
 		});
 		lblMRed4.setSize(46, 46); // Größe
@@ -247,11 +209,7 @@ public class MAEDNWindow {
 		lblMBlue1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 1;
-				int farbe = 2;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMBlue1.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMBlue1.setLocation(zug(maedn,2,1));
 			}
 		});
 		lblMBlue1.setSize(46, 46); // Größe
@@ -262,11 +220,7 @@ public class MAEDNWindow {
 		lblMBlue2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 2;
-				int farbe = 2;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMBlue2.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMBlue2.setLocation(zug(maedn,2,2)) ;
 			}
 		});
 		lblMBlue2.setSize(46, 46);// Größe
@@ -277,11 +231,7 @@ public class MAEDNWindow {
 		lblMBlue3.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 3;
-				int farbe = 2;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMBlue3.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMBlue3.setLocation(zug(maedn,2,3));
 			}
 		});
 		lblMBlue3.setSize(46, 46);// Größe
@@ -292,11 +242,7 @@ public class MAEDNWindow {
 		lblMBlue4.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				int id = 4;
-				int farbe = 2;
-				int wurf = 1;
-				int i = maedn.zug(farbe,id,wurf);
-				lblMBlue4.setLocation(MADENPositions.place(farbe, id,i)) ;
+				lblMBlue4.setLocation(zug(maedn,2,4));
 			}
 		});
 		lblMBlue4.setSize(46, 46);// Größe
@@ -307,5 +253,21 @@ public class MAEDNWindow {
 		JLabel lblBackground = new JLabel(imgBackground); // Backgroundimage Zuweisen
 		lblBackground.setBounds(0, 0, 580, 580); // Größe
 		frmMenschaergereDich.getContentPane().add(lblBackground); // An den Frame anheften
+	}
+
+	// Zugfunktion
+	private Point zug(MAEDNGame maedn,int farbe, int id)
+	{
+		Point p = null;
+		int wurf = 1;
+		int i = maedn.zug(farbe,id,wurf);
+		p = MADENPositions.place(farbe, id,i);
+		List <String> rlist = maedn.getMoveList();
+		for (String item: rlist) {
+			   String[] itemArray = new String[2];
+			   itemArray = item.split(item);
+			   System.out.println(itemArray[0]);
+			}
+		return p;
 	}
 }
