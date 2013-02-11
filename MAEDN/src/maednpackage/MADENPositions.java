@@ -2,6 +2,8 @@ package maednpackage;
 
 import java.awt.Point;
 
+import javax.swing.JLabel;
+
 public class MADENPositions {
 	// positionierungen
     private static int figX = 23; // Figur Größe der X Achse
@@ -9,6 +11,31 @@ public class MADENPositions {
     private static int zx = 290; // SpielfeldMitte X Achse
     private static int zy = 290; // SpielfeldMitte Y Achse
     private static int zadd = 52; // Schrittgröße der SpielfeldQuadrate
+    
+    private JLabel lblMBlue1 = null;
+    private JLabel lblMBlue2 = null;
+    private JLabel lblMBlue3 = null;
+    private JLabel lblMBlue4 = null;
+    
+    public void setB1(JLabel label) {
+    	lblMBlue1 = label;
+    }
+    
+    public void setB2(JLabel label) {
+    	lblMBlue2 = label;
+    }
+    
+    public void setB3(JLabel label) {
+    	lblMBlue3 = label;
+    }
+    
+    public void setB4(JLabel label) {
+    	lblMBlue4 = label;
+    }
+    
+    public void changeb() {
+    	lblMBlue4.setLocation(MADENPositions.place(2, 4,25)); // Position
+    }
     
 	// Funktion gibt die Position der aktuel geklickten farbe zurück
     public static Point place(int farbe, int id, int zahl)

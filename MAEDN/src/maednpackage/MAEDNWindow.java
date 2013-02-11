@@ -59,6 +59,7 @@ public class MAEDNWindow {
 		frmMenschaergereDich.getContentPane().setLayout(null);//Layoutmanager
 		
 		final MAEDNGame maedn = new MAEDNGame(); // Spielmechanik aufrufen
+		final MADENPositions posi = new MADENPositions();
 		
 		// Bilder laden
 		ImageIcon imgBackground = new ImageIcon(this.getClass().getResource("images/hintergrund.png")); // Spielfeld
@@ -214,17 +215,21 @@ public class MAEDNWindow {
 		});
 		lblMBlue1.setSize(46, 46); // Größe
 		lblMBlue1.setLocation(MADENPositions.place(2, 1,0));// Position
+		posi.setB4(lblMBlue1);
 		frmMenschaergereDich.getContentPane().add(lblMBlue1); // Und Ferig, ab aufs Spielfeld mit dir
 		
 		final JLabel lblMBlue2 = new JLabel(imgBlau); // Blaue Spielfigur wird Bild zugewiesen
 		lblMBlue2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				lblMBlue2.setLocation(zug(maedn,2,2)) ;
+				lblMBlue2.setLocation(zug(maedn,2,2));
+				posi.changeb();
+				
 			}
 		});
 		lblMBlue2.setSize(46, 46);// Größe
 		lblMBlue2.setLocation(MADENPositions.place(2, 2,0)); // Position
+		posi.setB4(lblMBlue2);
 		frmMenschaergereDich.getContentPane().add(lblMBlue2);
 		
 		final JLabel lblMBlue3 = new JLabel(imgBlau); // Blaue Spielfigur wird Bild zugewiesen
@@ -236,6 +241,7 @@ public class MAEDNWindow {
 		});
 		lblMBlue3.setSize(46, 46);// Größe
 		lblMBlue3.setLocation(MADENPositions.place(2, 3,0)); // Position
+		posi.setB4(lblMBlue3);
 		frmMenschaergereDich.getContentPane().add(lblMBlue3);
 		
 		final JLabel lblMBlue4 = new JLabel(imgBlau); // Blaue Spielfigur wird Bild zugewiesen
@@ -247,6 +253,7 @@ public class MAEDNWindow {
 		});
 		lblMBlue4.setSize(46, 46);// Größe
 		lblMBlue4.setLocation(MADENPositions.place(2, 4,0)); // Position
+		posi.setB4(lblMBlue4);
 		frmMenschaergereDich.getContentPane().add(lblMBlue4);
 		
 		// Zum Schluss den Hintergrund laden
