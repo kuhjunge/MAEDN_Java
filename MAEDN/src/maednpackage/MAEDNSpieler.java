@@ -17,7 +17,7 @@ public class MAEDNSpieler {
 		sFarbe = farbe; // Farbe des Spielers wird zugewiesen
 		String[] colorname = { "Jeder", "Rot", "Blau", "Grün", "Gelb" };
 		sFarbeName = colorname[sFarbe];
-		sFigur1 = new MAEDNFigur();
+		sFigur1 = new MAEDNFigur(); // Für jede Spielfigur wird ein Objekt erzeugt
 		sFigur2 = new MAEDNFigur();
 		sFigur3 = new MAEDNFigur();
 		sFigur4 = new MAEDNFigur();
@@ -47,6 +47,7 @@ public class MAEDNSpieler {
 		}
 	}
 	
+	// Addiert die angegebenen Schritte zum Fortschritt der Figur
 	public void addFigurFort(int id, int wurf)
 	{
 		//JOptionPane.showMessageDialog(null, wurf);
@@ -95,4 +96,5 @@ public class MAEDNSpieler {
         }
         return zahl;
     }
+	//
 }
