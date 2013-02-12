@@ -2,7 +2,6 @@ package maednpackage;
 
 import java.awt.Point;
 import java.util.List;
-
 import javax.swing.JLabel;
 
 public class MADENPositions {
@@ -36,7 +35,7 @@ public class MADENPositions {
 	private JLabel lblMYellow1 = null;
     private JLabel lblMYellow2 = null;
     private JLabel lblMYellow3 = null;
-    private JLabel lblMYelloe4 = null;
+    private JLabel lblMYellow4 = null;
     
 	// Setzt das Objekt für um die Spielfigur ansprechen zu können
     public void setLabel(int farbe, int id, JLabel label) {
@@ -97,16 +96,16 @@ public class MADENPositions {
 				switch (id)
 				{
 					case 1:
-						lblMGreen1 = label;
+						lblMYellow1 = label;
 						break;
 					case 2:
-						lblMGreen2 = label;
+						lblMYellow2 = label;
 						break;
 					case 3:
-						lblMGreen3 = label;
+						lblMYellow3 = label;
 						break;
 					case 4:
-						lblMGreen4 = label;
+						lblMYellow4 = label;
 						break;
 				}
 				break;
@@ -173,16 +172,16 @@ public class MADENPositions {
 				switch (id)
 				{
 					case 1:
-						label = lblMGreen1;
+						label = lblMYellow1;
 						break;
 					case 2:
-						label = lblMGreen2;
+						label = lblMYellow2;
 						break;
 					case 3:
-						label = lblMGreen3;
+						label = lblMYellow3;
 						break;
 					case 4:
-						label = lblMGreen4;
+						label = lblMYellow4;
 						break;
 				}
 				break;
@@ -207,21 +206,21 @@ public class MADENPositions {
 		Point p = null;
 		int i = maedn.getFigurFort(farbe,id);
 		p = place(farbe, id, i);
-		update();
 		return p;
 	}
 	
 	// Updatet alle Figuren aus der Updatelist
 	private void update()
 	{
-		List <String> rlist = maedn.getMoveList();
-		for (String item: rlist) 
+		List <String> list = maedn.getMoveList();
+		for (String item: list) 
 		{
 		   String[] itemArray = new String[2];
-		   itemArray = item.split(item);
+		   itemArray = item.split("-");
 		   JLabel label = getLabel(Integer.parseInt(itemArray[0]),Integer.parseInt(itemArray[1])); // String in Int convertieren
 		   label.setLocation(pUpdate(Integer.parseInt(itemArray[0]),Integer.parseInt(itemArray[1]))); // String in Int convertieren
 		}
+		maedn.clearMoveList();
 	}
 	
 	// Funktion gibt die Position der aktuel geklickten farbe zurück

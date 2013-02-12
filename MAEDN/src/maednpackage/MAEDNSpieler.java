@@ -1,5 +1,7 @@
 package maednpackage;
 
+import javax.swing.JOptionPane;
+
 public class MAEDNSpieler {
 	private int sFarbe;
 	private String sFarbeName;
@@ -109,13 +111,17 @@ public class MAEDNSpieler {
     public int checkcollide(int zahl)
     {
     	int ret = 0;
-		
-    	if (zahl > 0 && zahl < 40)
+    	//JOptionPane.showMessageDialog(null, zahl);
+    	if (zahl > 0 && zahl < 41)
     	{
 	    	for (int i = 1; i < 5; i++)
 	    	{
 	    		MAEDNFigur figur =  fig(i);
-	    		if (figur.collision(zahl)) ret = i;
+	    		if (figur.collision(zahl))
+	    		{
+	    			ret = i;
+	    			break;
+	    		}
 	    	}
     	}
     	return ret;

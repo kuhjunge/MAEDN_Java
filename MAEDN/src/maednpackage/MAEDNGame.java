@@ -29,7 +29,7 @@ public class MAEDNGame {
     	sp.addFigurFort(id, wurf);
     	int[] kick = new int[2];
     	//kick[1] = 0;
-    	kick = kickcheck(farbe,sp.getFigurFort(id) + wurf);
+    	kick = kickcheck(farbe,sp.getFigurFort(id));
     	if (kick[1] > 0) 
     	{
     		MAEDNSpieler spk = getSpieler(kick[0]);
@@ -43,13 +43,18 @@ public class MAEDNGame {
     public List<String> getMoveList()
     {
     	List <String> rlist = zugList;
-    	zugList.clear();
     	return rlist;
+    }
+    
+    public void clearMoveList()
+    {
+    	zugList.clear();
     }
 	
     // Überprüfen ob eine Spielfigur rausgeschmissen werden kann
-    public int[] kickcheck(int req, int wurf)
+    public int[] kickcheck(int req, int val)
     {
+    	
     	int[]ret = new int[2];
     	ret[0] = 0;
     	ret[1] = 0;
@@ -58,8 +63,12 @@ public class MAEDNGame {
     		if (i != req)
     		{
     			MAEDNSpieler sp = getSpieler(i);
-    			ret[1] = sp.checkcollide(sp.getFigurFort(wurf));
-    			if (ret[1] > 0) ret[0] = i;
+    			ret[1] = sp.checkcollide(val);
+    			if (ret[1] > 0) 
+    			{
+    				ret[0] = i;
+    				break;
+    			}
     		}
     	}
     	return ret;
