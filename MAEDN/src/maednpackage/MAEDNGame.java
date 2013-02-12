@@ -1,7 +1,7 @@
 package maednpackage;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.List; // Liste verwenden
+import java.util.ArrayList; // Liste verwenden
 
 public class MAEDNGame {
 
@@ -12,15 +12,16 @@ public class MAEDNGame {
 	private MAEDNSpieler sp4 = new MAEDNSpieler(4);
     
 	// Liste für die Upzudatenen Figuren
-	private List<String> list = new ArrayList<String>();
+	private List<String> zugList = new ArrayList<String>();
 	
-    // Spielzug durchführen
-	
+	// Aktueller Fortschritt der Figur
     public int getFigurFort(int farbe, int id)
     {
     	MAEDNSpieler sp = getSpieler(farbe);
     	 return sp.getFigurFort(id);
     }
+	
+	// Der Zug wird ausgeführt
     public int zug(int farbe, int id, int wurf)
     {
     	MAEDNSpieler sp = getSpieler(farbe);
@@ -33,7 +34,7 @@ public class MAEDNGame {
     	{
     		MAEDNSpieler spk = getSpieler(kick[0]);
     		spk.kickFigur(kick[1]);
-    		list.add(kick[0]+"-"+kick[1]);
+    		zugList.add(kick[0]+"-"+kick[1]);
     	}
     	return sp.getFigurFort(id);
     }
@@ -41,10 +42,11 @@ public class MAEDNGame {
     // List mit zu updatenen Figuren
     public List<String> getMoveList()
     {
-    	List <String> rlist = list;
-    	list.clear();
+    	List <String> rlist = zugList;
+    	zugList.clear();
     	return rlist;
     }
+	
     // Überprüfen ob eine Spielfigur rausgeschmissen werden kann
     public int[] kickcheck(int req, int wurf)
     {
@@ -84,4 +86,5 @@ public class MAEDNGame {
 		}
 		return sp;
     }
+	// Ende
 }

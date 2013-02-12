@@ -1,19 +1,22 @@
 package maednpackage;
 
 public class MAEDNFigur {
-	private int fFortschritt = 0;
-	private int fFarbe = 1;
+	private int fFortschritt = 0; // Fortschritt der Figur wird hier gespeichert
+	private int fFarbe = 1; // Farbe der Figur wird hier gespeichert
 	
+	// Konstruktor: Initialisiert das Objekt -> setzt die Farbe
 	public MAEDNFigur(int farbe)
 	{
-		fFarbe = farbe;
+		fFarbe = farbe; // Setzt die Farbe der Figur
 	}
+	
 	// Der Aktuelle Fortschritt wird zurück gegeben
 	public int getFortschritt()
 	{
-		return convertToFarbe(fFortschritt);
+		return convertToFarbe(fFortschritt); // Befor der Fortschritt zurück gegeben wird, wird der Wrt umgewandelt in die Farbe der Spielfigur
 	}
 	
+	// Gibt den aktuellen Fortschritt zurück ohne die Farbdifferenzu umzurechnen
 	public int getFortschrittRaw()
 	{
 		return fFortschritt;
@@ -39,7 +42,7 @@ public class MAEDNFigur {
 		else return false;
 	}
 	
-	// Kollisionserkennung der Figur
+	// Kollisionserkennung der Figur für die eigene Farbe
 	public boolean collisionRaw(int value)
 	{
 		if (value == fFortschritt) return true;
@@ -49,7 +52,8 @@ public class MAEDNFigur {
 	// Wandelt den Spielfeldwert in den Internen Fortschritt um
 	private int convertToFarbe(int zahl)
     {
-        if (fFarbe == 3)
+		// Werte zwischen 1 und 40 werden versetzt damit die Farbe auf dem richtigen Feld im Spielfeld steht
+        if (fFarbe == 3) // Grün Startfeld: 21
         {
             if (zahl > 0 && zahl < 21)
                 zahl = zahl + 20;
@@ -57,7 +61,7 @@ public class MAEDNFigur {
                 zahl = zahl - 20;
         }
 
-        else if (fFarbe == 2)
+        else if (fFarbe == 2) // Blau Startfeld 11
         {
             if (zahl > 0 && zahl < 31)
                 zahl = zahl + 10;
@@ -65,13 +69,15 @@ public class MAEDNFigur {
                 zahl = zahl - 30;
         }
 
-        else if (fFarbe == 4)
+        else if (fFarbe == 4) // Gelb Startfeld 31
         {
             if (zahl > 0 && zahl < 11)
                 zahl = zahl + 30;
             else if (zahl > 10 & zahl < 41)
                 zahl = zahl - 10;
         }
+		// Rot wird nicht mit abgefragt, da Rot auf dem Feld 1 Startet und somit nicht umgerechnet werden muss
         return zahl;
     }
+	// Ende
 }

@@ -30,6 +30,7 @@ public class MAEDNSpieler {
 		return sFarbeName;
 	}
 	
+	// Gibt das Objekt der ausgewählten Spielfigur zurück
 	private MAEDNFigur fig(int id)
 	{
 		MAEDNFigur figur = null;
@@ -57,7 +58,7 @@ public class MAEDNSpieler {
 		MAEDNFigur figur =  fig(id);
 		if (figur != null)
 		{
-			figur.gekickt();
+			figur.gekickt(); // Die ausgewählte Figur wird rausgeschmissen
 		}
 	}
 	
@@ -65,15 +66,15 @@ public class MAEDNSpieler {
 	public int getFigurFort(int id)
 	{
 		MAEDNFigur figur =  fig(id);
-		if (figur == null) return 0;
+		if (figur == null) return 0; // Sicherheit bei ungültiger Objektabfrage
 		return figur.getFortschritt();
 	}
 	
-	// Wert der Spielfigur zurück geben
+	// Wert der Spielfigur zurück geben ohne Farbumrechnung
 	private int getFigurFortRaw(int id)
 	{
 		MAEDNFigur figur =  fig(id);
-		if (figur == null) return 0;
+		if (figur == null) return 0; // Sicherheit bei ungültiger Objektabfrage
 		return figur.getFortschrittRaw();
 	}
 	
@@ -81,10 +82,10 @@ public class MAEDNSpieler {
 	public void addFigurFort(int id, int wurf)
 	{
 		//JOptionPane.showMessageDialog(null, wurf);
-		if (!checkcollideInside(id,wurf + getFigurFortRaw(id)))
+		if (!checkcollideInside(id,wurf + getFigurFortRaw(id))) // Kollision mit der eigenen Farbe?
 		{
 			MAEDNFigur figur =  fig(id);
-			if (figur != null) figur.addFortschritt(wurf);
+			if (figur != null) figur.addFortschritt(wurf); // addiert den Wurd dazu wenn die Figur nicht mit der eigenen Farbe kollidiert
 		}
 	}
 	
@@ -97,7 +98,7 @@ public class MAEDNSpieler {
 	    	for (int i = 1; i < 5; i++)
 	    	{
 	    		MAEDNFigur figur =  fig(i);
-	    		if (id != i) ret = figur.collisionRaw(value);
+	    		if (id != i) ret = figur.collision(value);
 	    		if (ret) break;
 	    	}
     	}
