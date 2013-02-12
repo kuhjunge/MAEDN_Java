@@ -10,6 +10,9 @@ public class MAEDNGame {
 	private MAEDNSpieler sp2 = new MAEDNSpieler(2);
 	private MAEDNSpieler sp3 = new MAEDNSpieler(3);
 	private MAEDNSpieler sp4 = new MAEDNSpieler(4);
+	
+	// Würfel
+	MAEDNWuerfel wuerfel = new MAEDNWuerfel();
     
 	// Liste für die Upzudatenen Figuren
 	private List<String> zugList = new ArrayList<String>();
@@ -21,12 +24,18 @@ public class MAEDNGame {
     	 return sp.getFigurFort(id);
     }
 	
+    public void wuerfeln()
+    {
+    	wuerfel.wurf();
+    }
+    
 	// Der Zug wird ausgeführt
-    public int zug(int farbe, int id, int wurf)
+    public int zug(int farbe, int id)
     {
     	MAEDNSpieler sp = getSpieler(farbe);
     	if (sp == null) return 0; // Wenn fehlerhafte Farbe ausgewählt wurde
-    	sp.addFigurFort(id, wurf);
+    	int vorher = sp.getFigurFort(id);
+    	sp.addFigurFort(id, wuerfel.getWurf());
     	int[] kick = new int[2];
     	//kick[1] = 0;
     	kick = kickcheck(farbe,sp.getFigurFort(id));
@@ -36,6 +45,7 @@ public class MAEDNGame {
     		spk.kickFigur(kick[1]);
     		zugList.add(kick[0]+"-"+kick[1]);
     	}
+    	if (vorher != sp.getFigurFort(id)) wuerfel.resetWurf();
     	return sp.getFigurFort(id);
     }
     

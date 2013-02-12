@@ -2,6 +2,8 @@ package maednpackage;
 
 import java.awt.Point;
 import java.util.List;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class MADENPositions {
@@ -12,9 +14,17 @@ public class MADENPositions {
     private static int zy = 290; // SpielfeldMitte Y Achse
     private static int zadd = 52; // Schrittgröße der SpielfeldQuadrate
     
+    // Bilder
+    private ImageIcon imgBackground = new ImageIcon(this.getClass().getResource("images/hintergrund.png")); //Blaue Spielfigur
+	private ImageIcon imgBlau = new ImageIcon(this.getClass().getResource("images/maennchenblau.png")); //Blaue Spielfigur
+	private ImageIcon imgRot = new ImageIcon(this.getClass().getResource("images/maennchenrot.png")); //Rote Spielfigur
+	private ImageIcon imgGruen = new ImageIcon(this.getClass().getResource("images/maennchengruen.png")); //Rote Spielfigur
+	private ImageIcon imgGelb = new ImageIcon(this.getClass().getResource("images/maennchengelb.png")); //Rote Spielfigur
+	private ImageIcon imgWuerfel = new ImageIcon(this.getClass().getResource("images/wuerfel_n.png")); // Würfel
+	private ImageIcon imgWuerfelGl = new ImageIcon(this.getClass().getResource("images/wuerfel_gl.png")); // Würfel Glow
+    
 	// Spielobjekt
-	/* final */ MAEDNGame maedn = new MAEDNGame(); // Spielmechanik aufrufen
-	MAEDNWuerfel wuerfel = new MAEDNWuerfel(); // Würfelobjekt
+	MAEDNGame maedn = new MAEDNGame(); // Spielmechanik aufrufen
 	
 	// Rot
 	private JLabel lblMRed1 = null;
@@ -36,6 +46,43 @@ public class MADENPositions {
     private JLabel lblMYellow2 = null;
     private JLabel lblMYellow3 = null;
     private JLabel lblMYellow4 = null;
+    // Würfel
+    private JLabel lblWuerfel = null;
+    // Funktionen
+    public ImageIcon getPic(int id)
+    {
+    	ImageIcon ret = null;
+		switch (id)
+		{
+			case 0:
+				ret = imgBackground;
+				break;
+			case 1:
+				ret = imgRot;
+				break;
+			case 2:
+				ret = imgBlau;
+				break;
+			case 3:
+				ret = imgGruen;
+				break;
+			case 4:
+				ret = imgGelb;
+				break;
+			case 5:
+				ret = imgWuerfel;
+				break;
+			case 6:
+				ret = imgWuerfelGl;
+				break;
+		}
+		return ret;
+    }
+    
+    // Setzt das Würfelobjekt
+    public void setWuerfel(JLabel label) {
+    	lblWuerfel = label;
+    }
     
 	// Setzt das Objekt für um die Spielfigur ansprechen zu können
     public void setLabel(int farbe, int id, JLabel label) {
@@ -193,10 +240,10 @@ public class MADENPositions {
 	public Point zug(int farbe, int id)
 	{
 		Point p = null;
-		int wurf = 1;
-		int i = maedn.zug(farbe,id,wurf);
+		int i = maedn.zug(farbe,id);
 		p = place(farbe, id,i);
 		update();
+		lblWuerfel.setIcon(imgWuerfel);
 		return p;
 	}
 	
@@ -221,6 +268,13 @@ public class MADENPositions {
 		   label.setLocation(pUpdate(Integer.parseInt(itemArray[0]),Integer.parseInt(itemArray[1]))); // String in Int convertieren
 		}
 		maedn.clearMoveList();
+	}
+	
+	public void klickWuerfel()
+	{
+		maedn.wuerfeln();
+		lblWuerfel.setIcon(imgWuerfelGl);
+		
 	}
 	
 	// Funktion gibt die Position der aktuel geklickten farbe zurück

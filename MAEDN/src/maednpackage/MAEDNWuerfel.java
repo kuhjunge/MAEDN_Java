@@ -14,20 +14,18 @@ public class MAEDNWuerfel {
 	// Simuliert einen Würfelwurf
 	public void wurf()
 	{
-		wurf = myRandom(1,6); // Würfelzahl zurück geben
+		if (wurf == 0) wurf = myRandom(1,6); // Würfelzahl zurück geben
+	}
+	
+	// Setzt den Würfel zurück
+	public void resetWurf()
+	{
+		wurf = 0; // Würfelzahl zurück geben
 	}
 	
 	// Gibt den Würfelwert zurück
-	public int getInfoWurf()
-	{
-		return wurf; // Würfelzahl zurück geben
-	}
-	
-	// Gibt den Würfelwert zurück, setzt dabei den Würfel wieder auf 0
 	public int getWurf()
 	{
-		int w = wurf;
-		wurf = 0;
-		return w; // Würfelzahl zurück geben
+		return wurf; // Würfelzahl zurück geben
 	}
 }

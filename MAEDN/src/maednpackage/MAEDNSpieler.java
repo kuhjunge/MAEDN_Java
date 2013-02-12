@@ -1,6 +1,6 @@
 package maednpackage;
 
-import javax.swing.JOptionPane;
+// import javax.swing.JOptionPane;
 
 public class MAEDNSpieler {
 	private int sFarbe;
@@ -100,7 +100,7 @@ public class MAEDNSpieler {
 	    	for (int i = 1; i < 5; i++)
 	    	{
 	    		MAEDNFigur figur =  fig(i);
-	    		if (id != i) ret = figur.collision(value);
+	    		if (id != i) ret = figur.collisionRaw(value);
 	    		if (ret) break;
 	    	}
     	}

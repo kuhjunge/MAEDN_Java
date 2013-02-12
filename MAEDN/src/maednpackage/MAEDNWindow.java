@@ -1,20 +1,21 @@
 package maednpackage;
 
-import java.awt.Container;
+//import java.awt.Container;
 import java.awt.EventQueue;
-import java.awt.Point;
-import javax.swing.ImageIcon;
+//import java.awt.Point;
+//import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 import java.awt.Color; // Farben
 import java.awt.event.MouseAdapter; // Mausevent
-import java.awt.event.MouseEvent; // Mausevent
-import java.util.List; // Liste
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
+import java.awt.event.MouseEvent;
+import java.awt.Point; // Mausevent
+//import java.util.List; // Liste
+//import java.awt.event.ComponentAdapter;
+//import java.awt.event.ComponentEvent;
+//import java.beans.PropertyChangeListener;
+//import java.beans.PropertyChangeEvent;
 
 public class MAEDNWindow {
 
@@ -41,6 +42,7 @@ public class MAEDNWindow {
 	 */
 	public MAEDNWindow() {
 		initialize();// Spielfeld erschaffen
+		System.out.println("Form initialisiert");
 	}
 
 	/**
@@ -59,18 +61,9 @@ public class MAEDNWindow {
 		// Objekt um die Positionen der Figuren zu managen
 		final MADENPositions posi = new MADENPositions();
 		
-		// Bilder laden
-		ImageIcon imgBackground = new ImageIcon(this.getClass().getResource("images/hintergrund.png")); // Spielfeld
-		ImageIcon imgBlau = new ImageIcon(this.getClass().getResource("images/maennchenblau.png")); //Blaue Spielfigur
-		ImageIcon imgRot = new ImageIcon(this.getClass().getResource("images/maennchenrot.png")); //Rote Spielfigur
-		ImageIcon imgGruen = new ImageIcon(this.getClass().getResource("images/maennchengruen.png")); //Rote Spielfigur
-		ImageIcon imgGelb = new ImageIcon(this.getClass().getResource("images/maennchengelb.png")); //Rote Spielfigur
-		ImageIcon imgWuerfel = new ImageIcon(this.getClass().getResource("images/wuerfel_n.png")); // Würfel
-		ImageIcon imgWuerfelGl = new ImageIcon(this.getClass().getResource("images/wuerfel_gl.png")); // Würfel Glow
-		
 		// ---------- Spielfiguren Generieren ----------
 		// Figuren Rot
-		final JLabel lblMRed1 = new JLabel(imgRot); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMRed1 = new JLabel(posi.getPic(1)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMRed1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -82,7 +75,7 @@ public class MAEDNWindow {
 		posi.setLabel(1,1,lblMRed1); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed1); // Und Ferig, ab aufs Spielfeld mit dir
 		
-		final JLabel lblMRed2 = new JLabel(imgRot); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMRed2 = new JLabel(posi.getPic(1)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMRed2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -94,7 +87,7 @@ public class MAEDNWindow {
 		posi.setLabel(1,2,lblMRed2); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed2);
 		
-		final JLabel lblMRed3 = new JLabel(imgRot); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMRed3 = new JLabel(posi.getPic(1)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMRed3.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -107,7 +100,7 @@ public class MAEDNWindow {
 		posi.setLabel(1,3,lblMRed3); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed3);
 		
-		final JLabel lblMRed4 = new JLabel(imgRot); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMRed4 = new JLabel(posi.getPic(1)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMRed4.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -121,7 +114,7 @@ public class MAEDNWindow {
 		frmMenschaergereDich.getContentPane().add(lblMRed4);
 		
 		// Figuren Blau
-		final JLabel lblMBlue1 = new JLabel(imgBlau); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMBlue1 = new JLabel(posi.getPic(2)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMBlue1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -133,7 +126,7 @@ public class MAEDNWindow {
 		posi.setLabel(2,1,lblMBlue1); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMBlue1); // Und Ferig, ab aufs Spielfeld mit dir
 		
-		final JLabel lblMBlue2 = new JLabel(imgBlau); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMBlue2 = new JLabel(posi.getPic(2)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMBlue2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -145,7 +138,7 @@ public class MAEDNWindow {
 		posi.setLabel(2,2,lblMBlue2); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMBlue2);
 		
-		final JLabel lblMBlue3 = new JLabel(imgBlau); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMBlue3 = new JLabel(posi.getPic(2)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMBlue3.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -157,7 +150,7 @@ public class MAEDNWindow {
 		posi.setLabel(2,3,lblMBlue3); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMBlue3);
 		
-		final JLabel lblMBlue4 = new JLabel(imgBlau); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMBlue4 = new JLabel(posi.getPic(2)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMBlue4.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -170,7 +163,7 @@ public class MAEDNWindow {
 		frmMenschaergereDich.getContentPane().add(lblMBlue4);
 		
 		// Figuren Grün
-		final JLabel lblMGreen1 = new JLabel(imgGruen); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMGreen1 = new JLabel(posi.getPic(3)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMGreen1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -182,7 +175,7 @@ public class MAEDNWindow {
 		posi.setLabel(3,1,lblMGreen1); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMGreen1); // Und Ferig, ab aufs Spielfeld mit dir
 		
-		final JLabel lblMGreen2 = new JLabel(imgGruen); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMGreen2 = new JLabel(posi.getPic(3)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMGreen2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -194,7 +187,7 @@ public class MAEDNWindow {
 		posi.setLabel(3,2,lblMGreen2); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMGreen2);
 		
-		final JLabel lblMGreen3 = new JLabel(imgGruen); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMGreen3 = new JLabel(posi.getPic(3)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMGreen3.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -206,7 +199,7 @@ public class MAEDNWindow {
 		posi.setLabel(3,3,lblMGreen3); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMGreen3);
 		
-		final JLabel lblMGreen4 = new JLabel(imgGruen); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMGreen4 = new JLabel(posi.getPic(3)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMGreen4.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -219,7 +212,7 @@ public class MAEDNWindow {
 		frmMenschaergereDich.getContentPane().add(lblMGreen4);
 		
 		// Figuren Gelb
-		final JLabel lblMYellow1 = new JLabel(imgGelb); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMYellow1 = new JLabel(posi.getPic(4)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMYellow1.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -231,7 +224,7 @@ public class MAEDNWindow {
 		posi.setLabel(4,1,lblMYellow1); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMYellow1); // Und Ferig, ab aufs Spielfeld mit dir
 		
-		final JLabel lblMYellow2 = new JLabel(imgGelb); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMYellow2 = new JLabel(posi.getPic(4)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMYellow2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -243,7 +236,7 @@ public class MAEDNWindow {
 		posi.setLabel(4,2,lblMYellow2); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMYellow2);
 		
-		final JLabel lblMYellow3 = new JLabel(imgGelb); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMYellow3 = new JLabel(posi.getPic(4)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMYellow3.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -255,7 +248,7 @@ public class MAEDNWindow {
 		posi.setLabel(4,3,lblMYellow3); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMYellow3);
 		
-		final JLabel lblMYellow4 = new JLabel(imgGelb); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMYellow4 = new JLabel(posi.getPic(4)); // Blaue Spielfigur wird Bild zugewiesen
 		lblMYellow4.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -268,8 +261,21 @@ public class MAEDNWindow {
 		frmMenschaergereDich.getContentPane().add(lblMYellow4);
 		// ---------- Spielfiguren generieren Ende ----------
 		
+		// Würfel 
+		JLabel lblWuerfel = new JLabel(posi.getPic(5));
+		lblWuerfel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				posi.klickWuerfel();
+			}
+		});
+		lblWuerfel.setSize(50, 50); // Größe
+		lblWuerfel.setLocation(new Point(265, 265));// Position
+		posi.setWuerfel( lblWuerfel); // Würfel an die Posi Klasse übergeben, damit er modifiziert werden kann
+		frmMenschaergereDich.getContentPane().add(lblWuerfel);
+		
 		// Zum Schluss den Hintergrund laden
-		JLabel lblBackground = new JLabel(imgBackground); // Backgroundimage Zuweisen
+		JLabel lblBackground = new JLabel(posi.getPic(0)); // Backgroundimage Zuweisen
 		lblBackground.setBounds(0, 0, 580, 580); // Größe
 		frmMenschaergereDich.getContentPane().add(lblBackground); // An den Frame anheften
 	}
