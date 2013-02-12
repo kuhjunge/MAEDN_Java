@@ -1,6 +1,7 @@
 package maednpackage;
 
 import java.awt.Point;
+import java.util.List;
 
 import javax.swing.JLabel;
 
@@ -44,16 +45,16 @@ public class MADENPositions {
 			case 1:
 				switch (id)
 				{
-					case:1
+					case 1:
 						lblMRed1 = label;
 						break;
-					case:2
+					case 2:
 						lblMRed2 = label;
 						break;
-					case:3
+					case 3:
 						lblMRed3 = label;
 						break;
-					case:4
+					case 4:
 						lblMRed4 = label;
 						break;
 				}
@@ -61,16 +62,16 @@ public class MADENPositions {
 			case 2:
 				switch (id)
 				{
-					case:1
+					case 1:
 						lblMBlue1 = label;
 						break;
-					case:2
+					case 2:
 						lblMBlue2 = label;
 						break;
-					case:3
+					case 3:
 						lblMBlue3 = label;
 						break;
-					case:4
+					case 4:
 						lblMBlue4 = label;
 						break;
 				}
@@ -78,16 +79,16 @@ public class MADENPositions {
 			case 3:
 				switch (id)
 				{
-					case:1
+					case 1:
 						lblMGreen1 = label;
 						break;
-					case:2
+					case 2:
 						lblMGreen2 = label;
 						break;
-					case:3
+					case 3:
 						lblMGreen3 = label;
 						break;
-					case:4
+					case 4:
 						lblMGreen4 = label;
 						break;
 				}
@@ -95,16 +96,16 @@ public class MADENPositions {
 			case 4:
 				switch (id)
 				{
-					case:1
+					case 1:
 						lblMGreen1 = label;
 						break;
-					case:2
+					case 2:
 						lblMGreen2 = label;
 						break;
-					case:3
+					case 3:
 						lblMGreen3 = label;
 						break;
-					case:4
+					case 4:
 						lblMGreen4 = label;
 						break;
 				}
@@ -120,16 +121,16 @@ public class MADENPositions {
 			case 1:
 				switch (id)
 				{
-					case:1
+					case 1:
 						label = lblMRed1;
 						break;
-					case:2
+					case 2:
 						label = lblMRed2;
 						break;
-					case:3
+					case 3:
 						label = lblMRed3;
 						break;
-					case:4
+					case 4:
 						label = lblMRed4;
 						break;
 				}
@@ -137,16 +138,16 @@ public class MADENPositions {
 			case 2:
 				switch (id)
 				{
-					case:1
+					case 1:
 						label = lblMBlue1;
 						break;
-					case:2
+					case 2: 
 						label = lblMBlue2;
 						break;
-					case:3
+					case 3:
 						label = lblMBlue3;
 						break;
-					case:4
+					case 4:
 						label = lblMBlue4;
 						break;
 				}
@@ -154,16 +155,16 @@ public class MADENPositions {
 			case 3:
 				switch (id)
 				{
-					case:1
+					case 1:
 						label = lblMGreen1;
 						break;
-					case:2
+					case 2:
 						label = lblMGreen2;
 						break;
-					case:3
+					case 3:
 						label = lblMGreen3;
 						break;
-					case:4
+					case 4:
 						label = lblMGreen4;
 						break;
 				}
@@ -171,16 +172,16 @@ public class MADENPositions {
 			case 4:
 				switch (id)
 				{
-					case:1
+					case 1:
 						label = lblMGreen1;
 						break;
-					case:2
+					case 2:
 						label = lblMGreen2;
 						break;
-					case:3
+					case 3:
 						label = lblMGreen3;
 						break;
-					case:4
+					case 4:
 						label = lblMGreen4;
 						break;
 				}
@@ -218,8 +219,8 @@ public class MADENPositions {
 		{
 		   String[] itemArray = new String[2];
 		   itemArray = item.split(item);
-		   //JLabel label = getLabel(itemArray[0],itemArray[1]) // BUG: String in Int convertieren
-		   //label.setLocation(posi.pUpdate(itemArray[0],itemArray[1])); //BUG: String in Int convertieren
+		   JLabel label = getLabel(Integer.parseInt(itemArray[0]),Integer.parseInt(itemArray[1])); // String in Int convertieren
+		   label.setLocation(pUpdate(Integer.parseInt(itemArray[0]),Integer.parseInt(itemArray[1]))); // String in Int convertieren
 		}
 	}
 	
