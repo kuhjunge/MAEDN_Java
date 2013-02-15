@@ -1,21 +1,13 @@
 package maednpackage;
 
-//import java.awt.Container;
 import java.awt.EventQueue;
-//import java.awt.Point;
-//import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-//import javax.swing.JOptionPane;
 import java.awt.Color; // Farben
 import java.awt.event.MouseAdapter; // Mausevent
 import java.awt.event.MouseEvent;
 import java.awt.Point; // Mausevent
-//import java.util.List; // Liste
-//import java.awt.event.ComponentAdapter;
-//import java.awt.event.ComponentEvent;
-//import java.beans.PropertyChangeListener;
-//import java.beans.PropertyChangeEvent;
+
 
 public class MAEDNWindow {
 

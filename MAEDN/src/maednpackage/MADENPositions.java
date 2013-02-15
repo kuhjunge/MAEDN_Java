@@ -274,7 +274,6 @@ public class MADENPositions {
 	{
 		maedn.wuerfeln();
 		lblWuerfel.setIcon(imgWuerfelGl);
-		
 	}
 	
 	// Funktion gibt die Position der aktuel geklickten farbe zurück
