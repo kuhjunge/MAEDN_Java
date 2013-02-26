@@ -189,8 +189,7 @@ public class MAEDNSpieler {
             if (getFigurFortRaw(i) < minzahl)
                 minzahl = getFigurFortRaw(i);
         }
-		
-		
+        
 		//Wenn über 44 = Zug nicht möglich
     	if (zahl > 44) 
     	{

@@ -49,7 +49,10 @@ public class MADENPositions {
     // Würfel
     private JLabel lblWuerfel = null;
     private JLabel lblInfo = null;
+    
     // Funktionen
+    
+    // gibt das Bild, dass angefragt wird zurück
     public ImageIcon getPic(int id)
     {
     	ImageIcon ret = null;
@@ -276,6 +279,7 @@ public class MADENPositions {
 		maedn.clearMoveList();
 	}
 	
+	// Der Würfel wird angeklickt und startet diese Funktion
 	public void klickWuerfel()
 	{
 		maedn.wuerfeln();

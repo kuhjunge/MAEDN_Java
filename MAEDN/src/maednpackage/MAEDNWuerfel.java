@@ -29,4 +29,10 @@ public class MAEDNWuerfel {
 	{
 		return wurf; // Würfelzahl zurück geben
 	}
+	
+	// Gibt den Würfelzähler zurück
+	public int getWurfzaheler()
+	{
+		return wurfzaehler; // Würfelzahl zurück geben
+	}
 }

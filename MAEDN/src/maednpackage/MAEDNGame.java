@@ -24,6 +24,7 @@ public class MAEDNGame {
     	 return sp.getFigurFort(id);
     }
 	
+    // Würfel benutzen
     public void wuerfeln()
     {
     	wuerfel.resetWurf();
@@ -36,9 +37,6 @@ public class MAEDNGame {
     	MAEDNSpieler sp = getSpieler(farbe);
     	if (sp == null) return 0; // Wenn fehlerhafte Farbe ausgewählt wurde
     	int vorher = sp.getFigurFort(id);
-    	// Regeln
-    	
-    	
     	// Zug 
     	sp.addFigurFort(id, wuerfel.getWurf());
     	// Rausschmeißcheck
@@ -63,6 +61,7 @@ public class MAEDNGame {
     	return rlist;
     }
     
+    // löscht die Liste mit den noch zu tätigen Zügen auf dem Spielfeld
     public void clearMoveList()
     {
     	zugList.clear();
@@ -89,7 +88,6 @@ public class MAEDNGame {
 		}
 		return sp;
     }
-    /* ------- REGELN ------- */
     
     // Überprüfen ob eine Spielfigur rausgeschmissen werden kann
     public int[] kickcheck(int req, int val)
@@ -113,7 +111,7 @@ public class MAEDNGame {
     	return ret;
     }
    
-    
+    // Gibt den aktuellen Wurf des Würfels zurück
     public int getWurf()
     {
     	return wuerfel.getWurf();
