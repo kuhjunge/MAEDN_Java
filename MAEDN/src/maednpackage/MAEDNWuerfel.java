@@ -3,7 +3,7 @@ package maednpackage;
 public class MAEDNWuerfel {
 	
 	private int wurf = 0; // Hier wird der Würfelwert gespeichert
-	
+	private int wurfzaehler = 0;
 	// Zufallszahl erzeugen
 	private static int myRandom(double low, double high) {
 		double rndd = Math.round(Math.random() * (high - low) + low);
@@ -15,6 +15,7 @@ public class MAEDNWuerfel {
 	public void wurf()
 	{
 		if (wurf == 0) wurf = myRandom(1,6); // Würfelzahl zurück geben
+		wurfzaehler++;
 	}
 	
 	// Setzt den Würfel zurück

@@ -253,12 +253,18 @@ public class MAEDNWindow {
 		frmMenschaergereDich.getContentPane().add(lblMYellow4);
 		// ---------- Spielfiguren generieren Ende ----------
 		
+		final JLabel lblInfo = new JLabel("");
+		lblInfo.setBounds(12, 368, 56, 16);
+		posi.setWuerfelInfo( lblInfo);
+		frmMenschaergereDich.getContentPane().add(lblInfo);
+		
 		// Würfel 
 		JLabel lblWuerfel = new JLabel(posi.getPic(5));
 		lblWuerfel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				posi.klickWuerfel();
+				
 			}
 		});
 		lblWuerfel.setSize(50, 50); // Größe

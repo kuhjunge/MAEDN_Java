@@ -73,7 +73,7 @@ public class MAEDNSpieler {
 	}
 	
 	// Wert der Spielfigur zurück geben ohne Farbumrechnung
-	private int getFigurFortRaw(int id)
+	public int getFigurFortRaw(int id)
 	{
 		MAEDNFigur figur =  fig(id);
 		if (figur == null) return 0; // Sicherheit bei ungültiger Objektabfrage
@@ -84,11 +84,8 @@ public class MAEDNSpieler {
 	public void addFigurFort(int id, int wurf)
 	{
 		//JOptionPane.showMessageDialog(null, wurf);
-		if (!checkcollideInside(id,wurf + getFigurFortRaw(id))) // Kollision mit der eigenen Farbe?
-		{
-			MAEDNFigur figur =  fig(id);
-			if (figur != null) figur.addFortschritt(wurf); // addiert den Wurd dazu wenn die Figur nicht mit der eigenen Farbe kollidiert
-		}
+		MAEDNFigur figur =  fig(id);
+		if (figur != null && wurfmoeglich(id,  wurf)) figur.addFortschritt(wurf); // addiert den Wurd dazu wenn die Regeln es erlauben
 	}
 	
     // Kollisionsdetection im Objekt
@@ -126,5 +123,123 @@ public class MAEDNSpieler {
     	}
     	return ret;
     }
+    
+    // Guckt nach wieviele Figuren sich im Haus befinden
+    private int getFigurImHaus()
+    {
+    	int geswert = 0;
+    	for (int i= 1; i < 5;i++)
+    	{
+    		if (getFigurFortRaw(i)==0)
+    		geswert++;
+    	}
+    	return geswert;
+    }
+    
+    // Zählt alle Figurenwerte zusammen (maxrückgabewert: 170)
+    private int getGesamtFigurWert()
+    {
+    	int geswert = 0;
+    	for (int i= 1; i < 5;i++)
+    	{
+    		geswert = geswert + getFigurFortRaw(i);
+    	}
+    	return geswert;
+    }
+    
+    // gibt die Anzahl der Wurfversuche zurück
+    public int wurfAnzahl()
+    {
+    	int draussen = 4 - getFigurImHaus();
+    	int gesamt = getGesamtFigurWert();
+    	int wurfanzahl = 1; // Normalerweise einen Wurf
+    	
+        if (draussen == 0) wurfanzahl = 0; //3 mal Würfeln wenn keine Figur auf dem Feld ist
+        if (draussen == 1 && gesamt == 44) wurfanzahl = 0; // 3 mal Würfeln da eine Figuren im im Ziel und drei im Haus sind
+        else if (draussen == 2 && gesamt == 87) wurfanzahl = 0; //3 mal Würfeln da zwei Figuren im im Ziel und zwei im Haus sind
+        else if (draussen == 3 && gesamt == 129) wurfanzahl = 0; // 3 mal Würfeln da drei Figuren im im Ziel und eine im Haus sind
+        else if (gesamt == 170) wurfanzahl = 0;  // Spiel zuende
+        return wurfanzahl;
+    }
+    
+    // prüft ob die zahl in irgendeiner Spielfigur enthalten ist
+    private int enthalten(int zahl)
+    {
+    	int erg = 0;
+    	for (int i= 1; i < 5;i++)
+    	{
+    		if (zahl == getFigurFortRaw(i))
+    		{
+    			erg++;
+    		}
+    	}
+ 
+    	return erg;
+    }
+    
+    // prüft ob der Zug möglich ist
+	private boolean wurfmoeglich(int id, int wurf)
+	{
+		boolean wurfmoeglich = true;
+		int startZahl = getFigurFortRaw(id);
+		int zahl = startZahl + wurf;// Die theoretisch zu ziehende Zahl ermitteln
+        int minzahl = 44;
+        for (int i = 0; i < 4; i++)
+        {
+            if (getFigurFortRaw(i) < minzahl)
+                minzahl = getFigurFortRaw(i);
+        }
+		
+		
+		//Wenn über 44 = Zug nicht möglich
+    	if (zahl > 44) 
+    	{
+    		wurfmoeglich =false;
+    	}
+    	
+    	// Wenn erster Zug und Startfeld besetzt
+		if (startZahl == 0 && checkcollideInside(id,1)) // Kollision mit der eigenen Farbe?
+		{
+			wurfmoeglich = false;
+		}
+    	// Wenn Farbe von eigener Farbe besetzt = zug nicht möglich
+    	else if (checkcollideInside(id,zahl)) // Kollision mit der eigenen Farbe?
+		{
+			wurfmoeglich = false;
+		}
+
+		// und der Würfel nicht 6 ist und man sich im Haus befindet
+    	if (wurf != 6 && startZahl == 0) 
+		{
+			wurfmoeglich = false;
+		}
+
+        // Kritischer Zug vor dem Ziel
+    	if (enthalten(zahl) > 0 && zahl != startZahl && zahl == minzahl)
+    	{
+    		wurfmoeglich = false;
+    	}
+    	
+    	// Bei 6 muss eine Figur aus dem Haus genommen werden.
+    	if (getFigurImHaus() > 0 && wurf == 6 && enthalten(1) < 0)
+    	{
+    		
+    		wurfmoeglich = false;
+    	}
+    	
+    	// Ist das Startfeld frei?
+    	if (getFigurImHaus() > 0 && startZahl != 1 && enthalten(1) < 0)  //Wenn eine Figur im Haus ist und
+    	{
+    		if (enthalten(1 + wurf) < 0 && zahl != 1 + wurf)
+            { // Wenn Startfeld + Würfel belegt ist
+                wurfmoeglich = false;
+            }
+            else if (enthalten(1 + wurf + wurf) < 0 && zahl != 1 + wurf + wurf)
+            {
+            	wurfmoeglich = false;
+            }
+    	}
+    	return wurfmoeglich;
+	}
 	//
 }

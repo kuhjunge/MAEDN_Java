@@ -48,6 +48,7 @@ public class MADENPositions {
     private JLabel lblMYellow4 = null;
     // Würfel
     private JLabel lblWuerfel = null;
+    private JLabel lblInfo = null;
     // Funktionen
     public ImageIcon getPic(int id)
     {
@@ -82,6 +83,11 @@ public class MADENPositions {
     // Setzt das Würfelobjekt
     public void setWuerfel(JLabel label) {
     	lblWuerfel = label;
+    }
+    
+    // Setzt WürfelInfoObjekt
+    public void setWuerfelInfo(JLabel label) {
+    	lblInfo = label;
     }
     
 	// Setzt das Objekt für um die Spielfigur ansprechen zu können
@@ -273,6 +279,7 @@ public class MADENPositions {
 	public void klickWuerfel()
 	{
 		maedn.wuerfeln();
+		lblInfo.setText( maedn.getWurf() + "");
 		lblWuerfel.setIcon(imgWuerfelGl);
 	}
 	

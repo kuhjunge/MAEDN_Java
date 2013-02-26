@@ -25,8 +25,14 @@ public class MAEDNFigur {
 	// Schritt wird zum Fortschritt der Figur hinzugerechnet
 	public void addFortschritt(int schritt)
 	{
-		if (fFortschritt + schritt < 45 && fFortschritt + schritt > 0) // Zahlen kleiner als 0 und über 45 nicht möglich
-		fFortschritt = fFortschritt+ schritt; // Fortschritt zur Figur addieren
+		if (fFortschritt == 0)
+		{
+			fFortschritt = fFortschritt+ 1; // Fortschritt zur Figur addieren
+		}
+		else if (fFortschritt + schritt < 45 && fFortschritt + schritt > 0)
+		{// Zahlen kleiner als 0 und über 45 nicht möglich
+			fFortschritt = fFortschritt+ schritt; // Fortschritt zur Figur addieren
+		}
 	}
 	
 	// Figur wurde rausgeschmissen
