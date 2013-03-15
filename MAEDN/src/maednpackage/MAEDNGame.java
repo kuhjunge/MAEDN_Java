@@ -93,14 +93,14 @@ public class MAEDNGame {
     public int[] kickcheck(int req, int val)
     { //req = request -> derjenige, der den Zug gemacht hat
     	int[]ret = new int[2];
-    	ret[0] = 0;
-    	ret[1] = 0;
+    	ret[0] = 0; // Farbe der rauszuschmeißenden Figur
+    	ret[1] = 0; // ID der rauszuschmeißenden Figur
     	for (int i= 1; i < 5;i++)
     	{
     		if (i != req)
     		{
     			MAEDNSpieler sp = getSpieler(i);
-    			ret[1] = sp.checkcollide(val);
+    			ret[1] = sp.checkcollide(val); // ID des Opfer setzen
     			if (ret[1] > 0) 
     			{
     				ret[0] = i;

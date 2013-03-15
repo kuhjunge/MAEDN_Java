@@ -83,7 +83,7 @@ public class MAEDNSpieler {
 	{
 		//JOptionPane.showMessageDialog(null, wurf);
 		MAEDNFigur figur =  fig(id);
-		if (figur != null && wurfmoeglich(id,  wurf)) figur.addFortschritt(wurf); // addiert den Wurd dazu wenn die Regeln es erlauben
+		if (figur != null && wurfmoeglich(id,  wurf)) figur.addFortschritt(wurf); // addiert den Wurf dazu wenn die Regeln es erlauben
 	}
 	
     // Kollisionsdetection im Objekt
@@ -123,6 +123,10 @@ public class MAEDNSpieler {
     }
     
     // Guckt nach wieviele Figuren sich im Haus befinden
+    //Wert zwischen eins und null
+    /*
+     * 
+     * */
     private int getFigurImHaus()
     {
     	int geswert = 0;
@@ -214,13 +218,14 @@ public class MAEDNSpieler {
 		}
 
         // Kritischer Zug vor dem Ziel
-    	if (enthalten(wurfZahl) > 0 && wurfZahl != startZahl && wurfZahl == minzahl)
+    /*	if (enthalten(wurfZahl) > 0 && wurfZahl != startZahl && wurfZahl == minzahl)
     	{
     		wurfmoeglich = false;
-    	}
+    	}*/
     	
     	// Bei 6 muss eine Figur aus dem Haus genommen werden.
-    	if (getFigurImHaus() > 0 && wurf == 6 && enthalten(1) > 0)
+    	// W
+    /*	if (getFigurImHaus() > 0 && wurf == 6 && enthalten(1) > 0)
     	{
     		wurfmoeglich = false;
     	}
@@ -236,7 +241,7 @@ public class MAEDNSpieler {
             {
             	wurfmoeglich = false;
             }
-    	}
+    	}*/
     	return wurfmoeglich;
 	}
 	//
