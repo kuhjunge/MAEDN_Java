@@ -1,7 +1,5 @@
 package maednpackage;
 
-// import javax.swing.JOptionPane;
-
 public class MAEDNSpieler {
 	private int sFarbe;
 	private String sFarbeName;
@@ -162,7 +160,8 @@ public class MAEDNSpieler {
         return wurfanzahl;
     }
     
-    // prüft ob die zahl in irgendeiner Spielfigur enthalten ist
+    // prüft ob die zahl in irgendeiner Spielfigur dieser Farbe enthalten ist
+    // Wert NULL wenn keine Figur der eigenen Farbe auf dem Feld steht oder Wert 1 wenn eine Figur der eigenen Farbe auf dem Feld steht
     private int enthalten(int zahl)
     {
     	int erg = 0;
@@ -182,7 +181,7 @@ public class MAEDNSpieler {
 	{
 		boolean wurfmoeglich = true;
 		int startZahl = getFigurFortRaw(id);
-		int zahl = startZahl + wurf;// Die theoretisch zu ziehende Zahl ermitteln
+		int wurfZahl = startZahl + wurf;// Die theoretisch zu ziehende Zahl ermitteln
         int minzahl = 44;
         for (int i = 0; i < 4; i++)
         {
@@ -191,7 +190,7 @@ public class MAEDNSpieler {
         }
         
 		//Wenn über 44 = Zug nicht möglich
-    	if (zahl > 44) 
+    	if (wurfZahl > 44) 
     	{
     		wurfmoeglich =false;
     	}
@@ -201,8 +200,9 @@ public class MAEDNSpieler {
 		{
 			wurfmoeglich = false;
 		}
+		
     	// Wenn Farbe von eigener Farbe besetzt = zug nicht möglich
-    	else if (checkcollideInside(id,zahl)) // Kollision mit der eigenen Farbe?
+    	else if (checkcollideInside(id,wurfZahl)) // Kollision mit der eigenen Farbe?
 		{
 			wurfmoeglich = false;
 		}
@@ -214,26 +214,25 @@ public class MAEDNSpieler {
 		}
 
         // Kritischer Zug vor dem Ziel
-    	if (enthalten(zahl) > 0 && zahl != startZahl && zahl == minzahl)
+    	if (enthalten(wurfZahl) > 0 && wurfZahl != startZahl && wurfZahl == minzahl)
     	{
     		wurfmoeglich = false;
     	}
     	
     	// Bei 6 muss eine Figur aus dem Haus genommen werden.
-    	if (getFigurImHaus() > 0 && wurf == 6 && enthalten(1) < 0)
+    	if (getFigurImHaus() > 0 && wurf == 6 && enthalten(1) > 0)
     	{
-    		
     		wurfmoeglich = false;
     	}
     	
     	// Ist das Startfeld frei?
-    	if (getFigurImHaus() > 0 && startZahl != 1 && enthalten(1) < 0)  //Wenn eine Figur im Haus ist und
+    	if (getFigurImHaus() > 0 && startZahl != 1 && enthalten(1) > 0)  //Wenn eine Figur im Haus ist und
     	{
-    		if (enthalten(1 + wurf) < 0 && zahl != 1 + wurf)
+    		if (enthalten(1 + wurf) > 0 && wurfZahl != 1 + wurf)
             { // Wenn Startfeld + Würfel belegt ist
                 wurfmoeglich = false;
             }
-            else if (enthalten(1 + wurf + wurf) < 0 && zahl != 1 + wurf + wurf)
+            else if (enthalten(1 + wurf + wurf) > 0 && wurfZahl != 1 + wurf + wurf)
             {
             	wurfmoeglich = false;
             }

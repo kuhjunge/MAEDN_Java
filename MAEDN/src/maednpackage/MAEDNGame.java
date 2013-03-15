@@ -34,40 +34,40 @@ public class MAEDNGame {
 	// Der Zug wird ausgeführt
     public int zug(int farbe, int id)
     {
-    	MAEDNSpieler sp = getSpieler(farbe);
+    	MAEDNSpieler sp = getSpieler(farbe); // Farbe auswählen
     	if (sp == null) return 0; // Wenn fehlerhafte Farbe ausgewählt wurde
-    	int vorher = sp.getFigurFort(id);
+    	int vorher = sp.getFigurFort(id); // Zahl die zuvor gespielt wurde merken
     	// Zug 
-    	sp.addFigurFort(id, wuerfel.getWurf());
-    	// Rausschmeißcheck
-    	int[] kick = new int[2];
+    	sp.addFigurFort(id, wuerfel.getWurf()); // Addiert den Fortschritt zur Figur
+    	// Rausschmeißcheck 
+    	int[] kick = new int[2]; // Variable zum Rausschmeißen
     	//kick[1] = 0;
-    	kick = kickcheck(farbe,sp.getFigurFort(id));
+    	kick = kickcheck(farbe,sp.getFigurFort(id)); // Es wird geprüft welche Figur rausgeschmissen werden können
     	if (kick[1] > 0) 
     	{
-    		MAEDNSpieler spk = getSpieler(kick[0]);
-    		spk.kickFigur(kick[1]);
-    		zugList.add(kick[0]+"-"+kick[1]);
+    		MAEDNSpieler spk = getSpieler(kick[0]); //Die entsprechende Figur
+    		spk.kickFigur(kick[1]); //  wird wieer auf 0 zurück gesetzt (also rausgeschmissen)
+    		zugList.add(kick[0]+"-"+kick[1]); // Und die Figur wird auf die Liste der veränderten Figuren gesetzt
     	}
 
-    	if (vorher != sp.getFigurFort(id)) wuerfel.resetWurf();
-    	return sp.getFigurFort(id);
+    	if (vorher != sp.getFigurFort(id)) wuerfel.resetWurf(); // Wenn der Zug stattgefunden hat, wird der Würfel zurückgesetzt
+    	return sp.getFigurFort(id); // Gibt den aktuellen Spielfigurenfortschritt zurück
     }
     
-    // List mit zu updatenen Figuren
+    // List mit zu ziehenden Figuren (außerhalb der geklickten Figuren)
     public List<String> getMoveList()
     {
     	List <String> rlist = zugList;
     	return rlist;
     }
     
-    // löscht die Liste mit den noch zu tätigen Zügen auf dem Spielfeld
+    // löscht die Liste mit den noch zu tätigen Zügen auf dem Spielfeld 
     public void clearMoveList()
     {
-    	zugList.clear();
+    	zugList.clear(); 
     }
     
-    // Spielerobjekt erfassen
+    // Spielerobjekt ausgeben
     private MAEDNSpieler getSpieler(int farbe)
     {
     	MAEDNSpieler sp = null;
