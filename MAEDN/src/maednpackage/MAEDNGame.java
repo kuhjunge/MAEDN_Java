@@ -43,7 +43,7 @@ public class MAEDNGame {
 	    	int vorher = sp.getFigurFort(id); // Zahl die zuvor gespielt wurde merken
 	    	// Zug 
 	    	sp.addFigurFort(id, wuerfel.getWurf()); // Addiert den Fortschritt zur Figur
-	    	if (wuerfel.getWurf() != 6) spieleramzug++; // Bei 6 nochmal ziehen
+	    	if (wuerfel.getWurf() != 6 && wuerfel.getWurf() != 0) spieleramzug++; // Bei 6 Spieler nicht weiter setzten
 	    	// Rausschmeißcheck 
 	    	int[] kick = new int[2]; // Variable zum Rausschmeißen
 	    	//kick[1] = 0;
@@ -58,7 +58,6 @@ public class MAEDNGame {
 	    	if (vorher != sp.getFigurFort(id)) wuerfel.resetWurf(); // Wenn der Zug stattgefunden hat, wird der Würfel zurückgesetzt
 	    	if (spieleramzug == 5) spieleramzug = 1; // Korrektur, dass nach Spieler 4 Spieler 1 kommt
     	}
-    	
     	return sp.getFigurFort(id); // Gibt den aktuellen Spielfigurenfortschritt zurück
     }
     
