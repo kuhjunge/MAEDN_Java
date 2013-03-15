@@ -48,11 +48,11 @@ public class MAEDNGame {
     public int zug(int farbe, int id)
     {
     	System.out.println("KLICK!");
+    	System.out.println("Spieler :"+ farbe + " == " + spieleramzug);
     	MAEDNSpieler sp = getSpieler(farbe); // Farbe auswählen
     	if (sp == null) return 0; // Wenn fehlerhafte Farbe ausgewählt wurde
     	if (spieleramzug == farbe || spieleramzug == 0) // Wenn Spieler drann ist 
     	{
-    		System.out.println("Spieler :" + spieleramzug);
     		if (spieleramzug == 0) spieleramzug = farbe; // Spielerfarbe beim ersten Zug setzen
 	    	int vorher = sp.getFigurFort(id); // Zahl die zuvor gespielt wurde merken
 	    	// Zug 
