@@ -28,6 +28,7 @@ public class MAEDNGame {
     // Würfel benutzen
     public void wuerfeln()
     {
+    	System.out.println("Würfeln");
     	wuerfel.resetWurf();
     	wuerfel.wurf();
     }
@@ -35,10 +36,12 @@ public class MAEDNGame {
 	// Der Zug wird ausgeführt
     public int zug(int farbe, int id)
     {
+    	System.out.println("KLICK!");
     	MAEDNSpieler sp = getSpieler(farbe); // Farbe auswählen
     	if (sp == null) return 0; // Wenn fehlerhafte Farbe ausgewählt wurde
     	if (spieleramzug == farbe || spieleramzug == 0) // Wenn Spieler drann ist 
     	{
+    		System.out.println("Spieler :" + spieleramzug);
     		if (spieleramzug == 0) spieleramzug = farbe; // Spielerfarbe beim ersten Zug setzen
 	    	int vorher = sp.getFigurFort(id); // Zahl die zuvor gespielt wurde merken
 	    	// Zug 
@@ -99,6 +102,7 @@ public class MAEDNGame {
     // Überprüfen ob eine Spielfigur rausgeschmissen werden kann
     public int[] kickcheck(int req, int val)
     { //req = request -> derjenige, der den Zug gemacht hat
+    	System.out.println("Rausschmisscheck");
     	int[]ret = new int[2];
     	ret[0] = 0; // Farbe der rauszuschmeißenden Figur
     	ret[1] = 0; // ID der rauszuschmeißenden Figur
