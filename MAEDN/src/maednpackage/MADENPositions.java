@@ -287,6 +287,11 @@ public class MADENPositions {
 		lblWuerfel.setIcon(imgWuerfelGl);
 	}
 	
+	public void parsecom(String com)
+	{
+		maedn.com(com);
+	}
+	
 	// Funktion gibt die Position der aktuel geklickten farbe zurück
     public static Point place(int farbe, int id, int zahl)
     { // Positionen Ermitteln Spielfeld oder farbenspezifische Positionen

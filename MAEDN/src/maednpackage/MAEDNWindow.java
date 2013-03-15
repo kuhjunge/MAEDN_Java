@@ -6,12 +6,15 @@ import javax.swing.JLabel;
 import java.awt.Color; // Farben
 import java.awt.event.MouseAdapter; // Mausevent
 import java.awt.event.MouseEvent;
-import java.awt.Point; // Mausevent
+import java.awt.Point;
+import javax.swing.JTextField;
+import javax.swing.JButton; // Mausevent
 
 
 public class MAEDNWindow {
 
 	private JFrame frmMenschaergereDich;
+	private JTextField textFieldCom;
 
 	/**
 	 * Launch the application.
@@ -276,5 +279,16 @@ public class MAEDNWindow {
 		JLabel lblBackground = new JLabel(posi.getPic(0)); // Backgroundimage Zuweisen
 		lblBackground.setBounds(0, 0, 580, 580); // Größe
 		frmMenschaergereDich.getContentPane().add(lblBackground); // An den Frame anheften
+		
+		textFieldCom = new JTextField();
+		textFieldCom.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				posi.parsecom(textFieldCom.getText());
+			}
+		});
+		textFieldCom.setBounds(457, 118, 116, 22);
+		frmMenschaergereDich.getContentPane().add(textFieldCom);
+		textFieldCom.setColumns(10);
 	}
 }

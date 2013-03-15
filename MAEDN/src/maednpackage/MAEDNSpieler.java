@@ -197,24 +197,28 @@ public class MAEDNSpieler {
     	if (wurfZahl > 44) 
     	{
     		wurfmoeglich =false;
+    		System.out.println("Würfel über 44");
     	}
     	
     	// Wenn erster Zug und Startfeld besetzt
 		if (startZahl == 0 && checkcollideInside(id,1)) // Kollision mit der eigenen Farbe?
 		{
 			wurfmoeglich = false;
+			System.out.println("erster Zug und Startfeld besetzt");
 		}
 		
     	// Wenn Farbe von eigener Farbe besetzt = zug nicht möglich
     	else if (checkcollideInside(id,wurfZahl)) // Kollision mit der eigenen Farbe?
 		{
 			wurfmoeglich = false;
+			System.out.println("Farbe von eigener Farbe besetzt = zug nicht möglich");
 		}
 
 		// und der Würfel nicht 6 ist und man sich im Haus befindet
     	if (wurf != 6 && startZahl == 0) 
 		{
 			wurfmoeglich = false;
+			System.out.println("der Würfel nicht 6 ist und man sich im Haus befindet");
 		}
 
         // Kritischer Zug vor dem Ziel

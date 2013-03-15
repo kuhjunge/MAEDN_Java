@@ -25,6 +25,12 @@ public class MAEDNWuerfel {
 	}
 	
 	// Gibt den Würfelwert zurück
+	public void setWurf(int swurf)
+	{
+		 wurf = swurf; // Würfelzahl zurück geben
+	}
+	
+	// Gibt den Würfelwert zurück
 	public int getWurf()
 	{
 		return wurf; // Würfelzahl zurück geben

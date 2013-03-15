@@ -33,6 +33,17 @@ public class MAEDNGame {
     	wuerfel.wurf();
     }
     
+    public void com(String com)
+    {
+    	System.out.println("Kommando gefeuert");
+    	wuerfel.setWurf(6);
+    	if (com == "wurf")
+    	{
+    		wuerfel.setWurf(6);
+			System.out.println("Kommando 2");
+    	}
+    }
+    
 	// Der Zug wird ausgeführt
     public int zug(int farbe, int id)
     {
@@ -53,12 +64,17 @@ public class MAEDNGame {
 	    	kick = kickcheck(farbe,sp.getFigurFort(id)); // Es wird geprüft welche Figur rausgeschmissen werden können
 	    	if (kick[1] > 0) 
 	    	{
+	    		System.out.println("Spieler wird rausgeschmissen");
 	    		MAEDNSpieler spk = getSpieler(kick[0]); //Die entsprechende Figur
 	    		spk.kickFigur(kick[1]); //  wird wieer auf 0 zurück gesetzt (also rausgeschmissen)
 	    		zugList.add(kick[0]+"-"+kick[1]); // Und die Figur wird auf die Liste der veränderten Figuren gesetzt
 	    	}
 	
-	    	if (vorher != sp.getFigurFort(id)) wuerfel.resetWurf(); // Wenn der Zug stattgefunden hat, wird der Würfel zurückgesetzt
+	    	if (vorher != sp.getFigurFort(id))
+    		{
+    			wuerfel.resetWurf(); // Wenn der Zug stattgefunden hat, wird der Würfel zurückgesetzt
+    			System.out.println("Würfel reseten");
+    		}
 	    	if (spieleramzug == 5) spieleramzug = 1; // Korrektur, dass nach Spieler 4 Spieler 1 kommt
     	}
     	return sp.getFigurFort(id); // Gibt den aktuellen Spielfigurenfortschritt zurück
@@ -102,7 +118,6 @@ public class MAEDNGame {
     // Überprüfen ob eine Spielfigur rausgeschmissen werden kann
     public int[] kickcheck(int req, int val)
     { //req = request -> derjenige, der den Zug gemacht hat
-    	System.out.println("Rausschmisscheck");
     	int[]ret = new int[2];
     	ret[0] = 0; // Farbe der rauszuschmeißenden Figur
     	ret[1] = 0; // ID der rauszuschmeißenden Figur
