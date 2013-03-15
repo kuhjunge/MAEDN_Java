@@ -10,6 +10,7 @@ public class MAEDNGame {
 	private MAEDNSpieler sp2 = new MAEDNSpieler(2);
 	private MAEDNSpieler sp3 = new MAEDNSpieler(3);
 	private MAEDNSpieler sp4 = new MAEDNSpieler(4);
+	private int spieleramzug = 0;
 	
 	// Würfel
 	MAEDNWuerfel wuerfel = new MAEDNWuerfel();
@@ -36,21 +37,28 @@ public class MAEDNGame {
     {
     	MAEDNSpieler sp = getSpieler(farbe); // Farbe auswählen
     	if (sp == null) return 0; // Wenn fehlerhafte Farbe ausgewählt wurde
-    	int vorher = sp.getFigurFort(id); // Zahl die zuvor gespielt wurde merken
-    	// Zug 
-    	sp.addFigurFort(id, wuerfel.getWurf()); // Addiert den Fortschritt zur Figur
-    	// Rausschmeißcheck 
-    	int[] kick = new int[2]; // Variable zum Rausschmeißen
-    	//kick[1] = 0;
-    	kick = kickcheck(farbe,sp.getFigurFort(id)); // Es wird geprüft welche Figur rausgeschmissen werden können
-    	if (kick[1] > 0) 
+    	if (spieleramzug == farbe || spieleramzug == 0) // Wenn Spieler drann ist 
     	{
-    		MAEDNSpieler spk = getSpieler(kick[0]); //Die entsprechende Figur
-    		spk.kickFigur(kick[1]); //  wird wieer auf 0 zurück gesetzt (also rausgeschmissen)
-    		zugList.add(kick[0]+"-"+kick[1]); // Und die Figur wird auf die Liste der veränderten Figuren gesetzt
+    		if (spieleramzug == 0) spieleramzug = farbe; // Spielerfarbe beim ersten Zug setzen
+	    	int vorher = sp.getFigurFort(id); // Zahl die zuvor gespielt wurde merken
+	    	// Zug 
+	    	sp.addFigurFort(id, wuerfel.getWurf()); // Addiert den Fortschritt zur Figur
+	    	if (wuerfel.getWurf() != 6) spieleramzug++; // Bei 6 nochmal ziehen
+	    	// Rausschmeißcheck 
+	    	int[] kick = new int[2]; // Variable zum Rausschmeißen
+	    	//kick[1] = 0;
+	    	kick = kickcheck(farbe,sp.getFigurFort(id)); // Es wird geprüft welche Figur rausgeschmissen werden können
+	    	if (kick[1] > 0) 
+	    	{
+	    		MAEDNSpieler spk = getSpieler(kick[0]); //Die entsprechende Figur
+	    		spk.kickFigur(kick[1]); //  wird wieer auf 0 zurück gesetzt (also rausgeschmissen)
+	    		zugList.add(kick[0]+"-"+kick[1]); // Und die Figur wird auf die Liste der veränderten Figuren gesetzt
+	    	}
+	
+	    	if (vorher != sp.getFigurFort(id)) wuerfel.resetWurf(); // Wenn der Zug stattgefunden hat, wird der Würfel zurückgesetzt
+	    	if (spieleramzug == 5) spieleramzug = 1; // Korrektur, dass nach Spieler 4 Spieler 1 kommt
     	}
-
-    	if (vorher != sp.getFigurFort(id)) wuerfel.resetWurf(); // Wenn der Zug stattgefunden hat, wird der Würfel zurückgesetzt
+    	
     	return sp.getFigurFort(id); // Gibt den aktuellen Spielfigurenfortschritt zurück
     }
     

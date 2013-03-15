@@ -230,7 +230,7 @@ public class MAEDNSpieler {
     		wurfmoeglich = false;
     	}
     	
-    	// Ist das Startfeld frei?
+    	// Ist das Startfeld frei
     	if (getFigurImHaus() > 0 && startZahl != 1 && enthalten(1) > 0)  //Wenn eine Figur im Haus ist und
     	{
     		if (enthalten(1 + wurf) > 0 && wurfZahl != 1 + wurf)
@@ -240,8 +240,7 @@ public class MAEDNSpieler {
             else if (enthalten(1 + wurf + wurf) > 0 && wurfZahl != 1 + wurf + wurf)
             {
             	wurfmoeglich = false;
-            }
-    	}*/
+         */
     	return wurfmoeglich;
 	}
 	//
