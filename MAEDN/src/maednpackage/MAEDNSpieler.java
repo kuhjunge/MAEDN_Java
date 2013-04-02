@@ -164,6 +164,7 @@ public class MAEDNSpieler {
         return wurfanzahl;
     }
     
+    // Ist Spielfelt besetzt?
     // prüft ob die zahl in irgendeiner Spielfigur dieser Farbe enthalten ist
     // Wert NULL wenn keine Figur der eigenen Farbe auf dem Feld steht oder Wert 1 wenn eine Figur der eigenen Farbe auf dem Feld steht
     private int enthalten(int zahl)
@@ -176,7 +177,6 @@ public class MAEDNSpieler {
     			erg++;
     		}
     	}
- 
     	return erg;
     }
     
@@ -193,6 +193,13 @@ public class MAEDNSpieler {
                 minzahl = getFigurFortRaw(i);
         }
         
+		//Wenn über 44 = Zug nicht möglich
+    	if (wurfZahl == startZahl) 
+    	{
+    		wurfmoeglich =false;
+    		System.out.println("Würfel ist 0!");
+    	}
+    	
 		//Wenn über 44 = Zug nicht möglich
     	if (wurfZahl > 44) 
     	{
@@ -222,29 +229,35 @@ public class MAEDNSpieler {
 		}
 
         // Kritischer Zug vor dem Ziel
-    /*	if (enthalten(wurfZahl) > 0 && wurfZahl != startZahl && wurfZahl == minzahl)
+    	if (enthalten(wurfZahl) > 0 && wurfZahl != startZahl && wurfZahl == minzahl)
     	{
     		wurfmoeglich = false;
-    	}*/
-    	
-    	// Bei 6 muss eine Figur aus dem Haus genommen werden.
-    	// W
-    /*	if (getFigurImHaus() > 0 && wurf == 6 && enthalten(1) > 0)
-    	{
-    		wurfmoeglich = false;
+    		System.out.println("Zug verworfen da kritisch und kein Zug möglich");
     	}
     	
-    	// Ist das Startfeld frei
-    	if (getFigurImHaus() > 0 && startZahl != 1 && enthalten(1) > 0)  //Wenn eine Figur im Haus ist und
+    	// Bei 6 muss eine Figur aus dem Haus genommen werden.
+    	if (getFigurImHaus() > 0 && wurf == 6 && enthalten(1) == 0 && startZahl != 0)
     	{
-    		if (enthalten(1 + wurf) > 0 && wurfZahl != 1 + wurf)
+    		wurfmoeglich = false;
+    		System.out.println("Bei 6 muss eine Figur aus dem Haus genommen werden");
+    	}
+    	
+    	// Ist das Startfeld frei?
+        if (startZahl != 1 && getFigurImHaus() > 0 && enthalten(1) > 0)
+        { // wenn diese Zahl nicht die auf dem Startfeld ist und das Startfeld belegt ist
+        	if (enthalten(1 + wurf) < 1 && wurfZahl != 1 + wurf+ wurf)
             { // Wenn Startfeld + Würfel belegt ist
-                wurfmoeglich = false;
+            	wurfmoeglich = false;
+            	System.out.println("Bitte erst das Startfeld freigeben!");
             }
-            else if (enthalten(1 + wurf + wurf) > 0 && wurfZahl != 1 + wurf + wurf)
+            else if (enthalten(1 + wurf+ wurf) < 1 && wurfZahl != 1 + wurf+ wurf)
             {
             	wurfmoeglich = false;
-         */
+                System.out.println("Bitte erst das Startfeld freigeben!");
+            }
+        }
+    	
+    	System.out.println("Zug ist möglich?:" + wurfmoeglich);
     	return wurfmoeglich;
 	}
 	//

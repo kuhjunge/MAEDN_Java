@@ -29,13 +29,15 @@ public class MAEDNGame {
     public void wuerfeln()
     {
     	System.out.println("Würfeln");
+    	System.out.println("Spieler am Zug:" + spieleramzug);
     	wuerfel.resetWurf();
     	wuerfel.wurf();
     }
     
+    // Führt ein Kommando aus  (Funktion für Debug)
     public void com(String com)
     {
-    	System.out.println("Kommando gefeuert");
+    	System.out.println("Kommando");
     	wuerfel.setWurf(6);
     	if (com == "wurf")
     	{
@@ -51,6 +53,7 @@ public class MAEDNGame {
     	System.out.println("Spieler :"+ farbe + " == " + spieleramzug);
     	MAEDNSpieler sp = getSpieler(farbe); // Farbe auswählen
     	if (sp == null) return 0; // Wenn fehlerhafte Farbe ausgewählt wurde
+    	//spieleramzug = 0; // DEBUG - Rundensystem für Testzwecke aushebeln
     	if (spieleramzug == farbe || spieleramzug == 0) // Wenn Spieler drann ist 
     	{
     		if (spieleramzug == 0) spieleramzug = farbe; // Spielerfarbe beim ersten Zug setzen
