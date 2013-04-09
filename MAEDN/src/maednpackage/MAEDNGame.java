@@ -129,7 +129,7 @@ public class MAEDNGame {
     		if (i != req)
     		{
     			MAEDNSpieler sp = getSpieler(i);
-    			ret[1] = sp.checkcollide(val); // ID des Opfer setzen
+    			ret[1] = sp.checkcollide(val); // ID des Opfers setzen
     			if (ret[1] > 0) 
     			{
     				ret[0] = i;
