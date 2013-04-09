@@ -287,9 +287,22 @@ public class MADENPositions {
 		lblWuerfel.setIcon(imgWuerfelGl);
 	}
 	
+	// Gibt ein Komando (CHEAT) an die Game Klasse weiter
 	public void parsecom(String com)
 	{
 		maedn.com(com);
+	}
+	
+	// Gibt die Position des Würfels zurück
+	public static Point wuerfelplace(int farbe)
+	{
+		Point ort = new Point(1, 1);
+		if (farbe == 0) ort = new Point(zx, zy);
+		else if (farbe == 1) ort = new Point(zx - (zadd * 2), zy - (zadd * 2));
+        else if (farbe == 2) ort = new Point(zx + (zadd * 2), zy - (zadd * 2));
+        else if (farbe == 3) ort = new Point(zx + (zadd * 2), zy + (zadd * 2));
+        else ort = new Point(zx - (zadd * 2), zy + (zadd * 2));
+        return ort;
 	}
 	
 	// Funktion gibt die Position der aktuel geklickten farbe zurück
