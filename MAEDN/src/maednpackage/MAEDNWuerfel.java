@@ -5,7 +5,7 @@ public class MAEDNWuerfel {
 	private int wurf = 0; // Hier wird der Würfelwert gespeichert
 	private int wurfzaehler = 0;
 	// Zufallszahl erzeugen
-	private static int myRandom(double low, double high) {
+	private static int zufallszahl(double low, double high) {
 		double rndd = Math.round(Math.random() * (high - low) + low);
 		int value = new Double(rndd).intValue();
 		return value;
@@ -14,7 +14,7 @@ public class MAEDNWuerfel {
 	// Simuliert einen Würfelwurf
 	public void wurf()
 	{
-		if (wurf == 0) wurf = myRandom(1,6); // Würfelzahl zurück geben
+		if (wurf == 0) wurf = zufallszahl(1,6); // Würfelzahl zurück geben
 		wurfzaehler++;
 	}
 	
@@ -24,7 +24,7 @@ public class MAEDNWuerfel {
 		wurf = 0; // Würfelzahl zurück geben
 	}
 	
-	// Gibt den Würfelwert zurück
+	// Setzt den Wert des Würfels manuell (Debug / Cheat)
 	public void setWurf(int swurf)
 	{
 		 wurf = swurf; // Würfelzahl zurück geben
