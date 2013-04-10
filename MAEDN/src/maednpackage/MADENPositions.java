@@ -22,6 +22,12 @@ public class MADENPositions {
 	private ImageIcon imgGelb = new ImageIcon(this.getClass().getResource("images/maennchengelb.png")); //Rote Spielfigur
 	private ImageIcon imgWuerfel = new ImageIcon(this.getClass().getResource("images/wuerfel_n.png")); // Würfel
 	private ImageIcon imgWuerfelGl = new ImageIcon(this.getClass().getResource("images/wuerfel_gl.png")); // Würfel Glow
+	private ImageIcon imgWuerfel1 = new ImageIcon(this.getClass().getResource("images/wuerfel1.png")); // Würfel Glow
+	private ImageIcon imgWuerfel2 = new ImageIcon(this.getClass().getResource("images/wuerfel2.png")); // Würfel Glow
+	private ImageIcon imgWuerfel3 = new ImageIcon(this.getClass().getResource("images/wuerfel3.png")); // Würfel Glow
+	private ImageIcon imgWuerfel4 = new ImageIcon(this.getClass().getResource("images/wuerfel4.png")); // Würfel Glow
+	private ImageIcon imgWuerfel5 = new ImageIcon(this.getClass().getResource("images/wuerfel5.png")); // Würfel Glow
+	private ImageIcon imgWuerfel6 = new ImageIcon(this.getClass().getResource("images/wuerfel6.png")); // Würfel Glow
     
 	// Spielobjekt
 	MAEDNGame maedn = new MAEDNGame(); // Spielmechanik aufrufen
@@ -77,6 +83,24 @@ public class MADENPositions {
 				ret = imgWuerfel;
 				break;
 			case 6:
+				ret = imgWuerfel1;
+				break;
+			case 7:
+				ret = imgWuerfel2;
+				break;
+			case 8:
+				ret = imgWuerfel3;
+				break;
+			case 9:
+				ret = imgWuerfel4;
+				break;
+			case 10:
+				ret = imgWuerfel5;
+				break;
+			case 11:
+				ret = imgWuerfel6;
+				break;
+			default:
 				ret = imgWuerfelGl;
 				break;
 		}
@@ -253,6 +277,10 @@ public class MADENPositions {
 		p = place(farbe, id,i);
 		update();
 		lblWuerfel.setIcon(imgWuerfel);
+		// Infolabel zurücksetzen wenn Wurf 0
+		if (maedn.getWurf() == 0)
+		lblInfo.setText("");
+		lblWuerfel.setLocation(wuerfelplace(maedn.getspieleramzug()));
 		return p;
 	}
 	
@@ -283,8 +311,15 @@ public class MADENPositions {
 	public void klickWuerfel()
 	{
 		maedn.wuerfeln();
-		lblInfo.setText( maedn.getWurf() + "");
-		lblWuerfel.setIcon(imgWuerfelGl);
+		if (maedn.getWurf() == 0)
+			lblInfo.setText( "<html><body>" +  maedn.getspieleramzug() + " ist am Zug!</body></html>");
+		else {
+			// JLabel unterstützen normalerweise keine Zeilenumbrüche, deshalb ein Workaround mit HTML
+			lblInfo.setText( "<html><body>Es wurde eine " + maedn.getWurf() + " gewürfelt <br>" +
+					maedn.getspieleramzug() + " ist am Zug!</body></html>");
+			lblWuerfel.setIcon(getPic(5 + maedn.getWurf()));
+		}
+		lblWuerfel.setLocation(wuerfelplace(maedn.getspieleramzug()));
 	}
 	
 	// Gibt ein Komando (CHEAT) an die Game Klasse weiter
@@ -297,11 +332,12 @@ public class MADENPositions {
 	public static Point wuerfelplace(int farbe)
 	{
 		Point ort = new Point(1, 1);
-		if (farbe == 0) ort = new Point(zx, zy);
-		else if (farbe == 1) ort = new Point(zx - (zadd * 2), zy - (zadd * 2));
-        else if (farbe == 2) ort = new Point(zx + (zadd * 2), zy - (zadd * 2));
-        else if (farbe == 3) ort = new Point(zx + (zadd * 2), zy + (zadd * 2));
-        else ort = new Point(zx - (zadd * 2), zy + (zadd * 2));
+		if (farbe == 4)		 ort = new Point(zx + (zadd * 3), zy + (zadd * 3));
+        else if (farbe == 1) ort = new Point(zx - (zadd * 3), zy + (zadd * 3));
+		else if (farbe == 2) ort = new Point(zx - (zadd * 3), zy - (zadd * 3));
+        else if (farbe == 3) ort = new Point(zx + (zadd * 3), zy - (zadd * 3));
+		else   ort = new Point(zx, zy);
+		ort = new Point(ort.x - 24, ort.y - 24);
         return ort;
 	}
 	

@@ -65,6 +65,20 @@ public class MAEDNWindow {
 				lblMRed1.setLocation(posi.zug(1,1));
 			}
 		});
+		
+		// Würfel 
+		JLabel lblWuerfel = new JLabel(posi.getPic(5));
+		lblWuerfel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				posi.klickWuerfel();
+				
+			}
+		});
+		lblWuerfel.setSize(50, 50); // Größe
+		lblWuerfel.setLocation(new Point(265, 265));// Position
+		posi.setWuerfel( lblWuerfel); // Würfel an die Posi Klasse übergeben, damit er modifiziert werden kann
+		frmMenschaergereDich.getContentPane().add(lblWuerfel);
 		lblMRed1.setSize(46, 46); // Größe
 		lblMRed1.setLocation(MADENPositions.place(1, 1,0));// Position
 		posi.setLabel(1,1,lblMRed1); // Objektreferenz für Positionsklasse übergeben
@@ -257,23 +271,9 @@ public class MAEDNWindow {
 		// ---------- Spielfiguren generieren Ende ----------
 		
 		final JLabel lblInfo = new JLabel("");
-		lblInfo.setBounds(12, 368, 56, 16);
+		lblInfo.setBounds(12, 368, 203, 40);
 		posi.setWuerfelInfo( lblInfo);
 		frmMenschaergereDich.getContentPane().add(lblInfo);
-		
-		// Würfel 
-		JLabel lblWuerfel = new JLabel(posi.getPic(5));
-		lblWuerfel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				posi.klickWuerfel();
-				
-			}
-		});
-		lblWuerfel.setSize(50, 50); // Größe
-		lblWuerfel.setLocation(new Point(265, 265));// Position
-		posi.setWuerfel( lblWuerfel); // Würfel an die Posi Klasse übergeben, damit er modifiziert werden kann
-		frmMenschaergereDich.getContentPane().add(lblWuerfel);
 		
 		// Zum Schluss den Hintergrund laden
 		JLabel lblBackground = new JLabel(posi.getPic(0)); // Backgroundimage Zuweisen
@@ -287,7 +287,7 @@ public class MAEDNWindow {
 				posi.parsecom(textFieldCom.getText());
 			}
 		});
-		textFieldCom.setBounds(457, 118, 116, 22);
+		textFieldCom.setBounds(379, 550, 94, 22);
 		frmMenschaergereDich.getContentPane().add(textFieldCom);
 		textFieldCom.setColumns(10);
 	}

@@ -2,8 +2,13 @@ package maednpackage;
 
 public class MAEDNWuerfel {
 	
+	// Variabeln
 	private int wurf = 0; // Hier wird der Würfelwert gespeichert
 	private int wurfzaehler = 0;
+	private int wurfversuch = 0;
+	private boolean forceenable = false;
+	
+	// Methoden
 	// Zufallszahl erzeugen
 	private static int zufallszahl(double low, double high) {
 		double rndd = Math.round(Math.random() * (high - low) + low);
@@ -14,20 +19,23 @@ public class MAEDNWuerfel {
 	// Simuliert einen Würfelwurf
 	public void wurf()
 	{
-		if (wurf == 0) wurf = zufallszahl(1,6); // Würfelzahl zurück geben
+		if (wurf == 0 || forceenable) wurf = zufallszahl(1,6); // Würfelzahl zurück geben
 		wurfzaehler++;
+		wurfversuch++;
+		forceenable = false;
+		System.out.println("Würfel: "+ wurf + " Versuch" + wurfversuch + " Gesamt: " + wurfzaehler);
 	}
 	
 	// Setzt den Würfel zurück
 	public void resetWurf()
 	{
-		wurf = 0; // Würfelzahl zurück geben
+		wurf = 0; // Wurf auf Null zurücksetzen
 	}
 	
 	// Setzt den Wert des Würfels manuell (Debug / Cheat)
 	public void setWurf(int swurf)
 	{
-		 wurf = swurf; // Würfelzahl zurück geben
+		 wurf = swurf; // Wert des Wurfes ändern
 	}
 	
 	// Gibt den Würfelwert zurück
@@ -39,6 +47,23 @@ public class MAEDNWuerfel {
 	// Gibt den Würfelzähler zurück
 	public int getWurfzaheler()
 	{
-		return wurfzaehler; // Würfelzahl zurück geben
+		return wurfzaehler; // Würfelzähler zurück geben
+	}
+	
+	// Versuche zurücksetzen
+	public void resetVersuche()
+	{
+		wurfversuch = 0; // Versuche auf Null setzen
+	}
+	
+	// Versuche auslesen
+	public int getVersuche()
+	{
+		return wurfversuch; // gibt die versuche zurück
+	}
+	
+	public void enable()
+	{
+		forceenable = true;
 	}
 }

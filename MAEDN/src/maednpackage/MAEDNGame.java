@@ -24,14 +24,50 @@ public class MAEDNGame {
     	MAEDNSpieler sp = getSpieler(farbe);
     	 return sp.getFigurFort(id);
     }
-	
+    
+
+    
     // Würfel benutzen
     public void wuerfeln()
     {
-    	System.out.println("Würfeln");
+    	System.out.println("Würfeln");	
+    	// Prüfen ob Zug möglich
+    	if (spieleramzug == 0) spieleramzug++; // Workaround um Endlosklicken beim Würfel beim Start zu verhindern
+    	MAEDNSpieler sp = getSpieler(spieleramzug); // Farbe auswähle
+    	if(wuerfel.getWurf() == 0)
+    	{
+    		wuerfel.resetVersuche();
+    		wuerfel.wurf();
+    		System.out.println("Normaler Wurf");
+    	}
+    	else if (wuerfel.getWurf() != 6 && sp.mehrfachwurf() && wuerfel.getVersuche() < 3)
+    	{
+    		wuerfel.resetWurf();
+    		wuerfel.wurf();
+    		System.out.println("3 Mal würfeln beim Start");
+    		if (wuerfel.getVersuche() == 3) checkzug(); // Letzten Versuch verhauen
+    	}
+    	else checkzug();
     	System.out.println("Spieler am Zug:" + spieleramzug);
-    	wuerfel.resetWurf();
-    	wuerfel.wurf();
+    }
+    
+    private void checkzug() 
+    {
+    	MAEDNSpieler sp = getSpieler(spieleramzug); // Farbe auswähle
+    	if (sp.checkpossibly(wuerfel.getWurf()) == false)
+    	{
+    		spieleramzug++;
+    		if (spieleramzug == 5) spieleramzug = 1; // Korrektur, dass nach Spieler 4 Spieler 1 kommt
+    		wuerfel.resetVersuche();
+    		//wuerfel.resetWurf();
+    		wuerfel.enable();
+    		System.out.println("Würfel wird gelöscht -> Blockiersicherung");
+    	}	
+    }
+        
+    public int getspieleramzug()
+    {
+    	return spieleramzug;
     }
     
     // Führt ein Kommando aus  (Funktion für Debug)
@@ -60,7 +96,6 @@ public class MAEDNGame {
 	    	int vorher = sp.getFigurFort(id); // Zahl die zuvor gespielt wurde merken
 	    	// Zug 
 	    	sp.addFigurFort(id, wuerfel.getWurf()); // Addiert den Fortschritt zur Figur
-	    	if (wuerfel.getWurf() != 6 && wuerfel.getWurf() != 0) spieleramzug++; // Bei 6 Spieler nicht weiter setzten
 	    	// Rausschmeißcheck 
 	    	int[] kick = new int[2]; // Variable zum Rausschmeißen
 	    	//kick[1] = 0;
@@ -72,13 +107,15 @@ public class MAEDNGame {
 	    		spk.kickFigur(kick[1]); //  wird wieer auf 0 zurück gesetzt (also rausgeschmissen)
 	    		zugList.add(kick[0]+"-"+kick[1]); // Und die Figur wird auf die Liste der veränderten Figuren gesetzt
 	    	}
-	
+	    	// Prüfen ob unterschied zu vorher
 	    	if (vorher != sp.getFigurFort(id))
     		{
+	    		if (wuerfel.getWurf() != 6 && wuerfel.getWurf() != 0) spieleramzug++; // Bei 6 Spieler nicht weiter setzten
     			wuerfel.resetWurf(); // Wenn der Zug stattgefunden hat, wird der Würfel zurückgesetzt
     			System.out.println("Würfel reseten");
+    			if (spieleramzug == 5) spieleramzug = 1; // Korrektur, dass nach Spieler 4 Spieler 1 kommt
     		}
-	    	if (spieleramzug == 5) spieleramzug = 1; // Korrektur, dass nach Spieler 4 Spieler 1 kommt
+	    	
     	}
     	return sp.getFigurFort(id); // Gibt den aktuellen Spielfigurenfortschritt zurück
     }

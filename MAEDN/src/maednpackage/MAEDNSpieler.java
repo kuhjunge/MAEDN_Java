@@ -150,18 +150,28 @@ public class MAEDNSpieler {
     }
     
     // gibt die Anzahl der Wurfversuche zurück
-    public int wurfAnzahl()
+    public boolean mehrfachwurf()
     {
     	int draussen = 4 - getFigurImHaus();
     	int gesamt = getGesamtFigurWert();
-    	int wurfanzahl = 1; // Normalerweise einen Wurf
+    	boolean mehrfachwurf = false; // Normalerweise einen Wurf
     	
-        if (draussen == 0) wurfanzahl = 0; //3 mal Würfeln wenn keine Figur auf dem Feld ist
-        if (draussen == 1 && gesamt == 44) wurfanzahl = 0; // 3 mal Würfeln da eine Figuren im im Ziel und drei im Haus sind
-        else if (draussen == 2 && gesamt == 87) wurfanzahl = 0; //3 mal Würfeln da zwei Figuren im im Ziel und zwei im Haus sind
-        else if (draussen == 3 && gesamt == 129) wurfanzahl = 0; // 3 mal Würfeln da drei Figuren im im Ziel und eine im Haus sind
-        else if (gesamt == 170) wurfanzahl = 0;  // Spiel zuende
-        return wurfanzahl;
+        if (draussen == 0) mehrfachwurf = true; //3 mal Würfeln wenn keine Figur auf dem Feld ist
+        if (draussen == 1 && gesamt == 44) mehrfachwurf = true; // 3 mal Würfeln da eine Figuren im im Ziel und drei im Haus sind
+        else if (draussen == 2 && gesamt == 87) mehrfachwurf = true; //3 mal Würfeln da zwei Figuren im im Ziel und zwei im Haus sind
+        else if (draussen == 3 && gesamt == 129) mehrfachwurf = true; // 3 mal Würfeln da drei Figuren im im Ziel und eine im Haus sind
+       // else if (gesamt == 170) wurfanzahl = 0;  // Spiel zuende
+        return mehrfachwurf;
+    }
+    
+    // Prüft ob Zug möglich ist
+    public boolean checkpossibly(int wurf)
+    {
+    	if(wurfmoeglich(1,wurf) ||
+    	wurfmoeglich(2,wurf) || 
+    	wurfmoeglich(3,wurf) || 
+    	wurfmoeglich(4,wurf)) return true;
+    	else return false;
     }
     
     // Ist Spielfelt besetzt?
