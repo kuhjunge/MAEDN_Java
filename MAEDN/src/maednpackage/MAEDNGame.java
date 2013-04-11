@@ -12,45 +12,51 @@ public class MAEDNGame {
 	private MAEDNSpieler sp4 = new MAEDNSpieler(4);
 	private int spieleramzug = 0;
 	
-	// Würfel
-	MAEDNWuerfel wuerfel = new MAEDNWuerfel();
-    
-	// Liste für die Upzudatenen Figuren
-	private List<String> zugList = new ArrayList<String>();
+	MAEDNWuerfel wuerfel = new MAEDNWuerfel(); // Würfel
+	private List<String> zugList = new ArrayList<String>(); // Liste für die Upzudatenen Figuren
 	
-	// Aktueller Fortschritt der Figur
+	// Methoden
+	/**
+	* Aktueller Fortschritt der Figur
+	* @param Die FarbID
+	* @param Die ID der Figur
+	* @return Den Wert der Spielfigur
+	*/
     public int getFigurFort(int farbe, int id)
     {
     	MAEDNSpieler sp = getSpieler(farbe);
     	 return sp.getFigurFort(id);
     }
     
-
-    
-    // Würfel benutzen
+	/**
+	* Würfel benutzen
+	*/
     public void wuerfeln()
     {
     	System.out.println("Würfeln");	
     	// Prüfen ob Zug möglich
     	if (spieleramzug == 0) spieleramzug++; // Workaround um Endlosklicken beim Würfel beim Start zu verhindern
     	MAEDNSpieler sp = getSpieler(spieleramzug); // Farbe auswähle
-    	if(wuerfel.getWurf() == 0)
+    	if(wuerfel.getWurf() == 0) // Normaler Wurf
     	{
     		wuerfel.resetVersuche();
     		wuerfel.wurf();
     		System.out.println("Normaler Wurf");
     	}
-    	else if (wuerfel.getWurf() != 6 && sp.mehrfachwurf() && wuerfel.getVersuche() < 3)
+    	else if (wuerfel.getWurf() != 6 && sp.mehrfachwurf() && wuerfel.getVersuche() < 3) // 3 Versuche bei Spielbeginn
     	{
     		wuerfel.resetWurf();
     		wuerfel.wurf();
     		System.out.println("3 Mal würfeln beim Start");
     		if (wuerfel.getVersuche() == 3) checkzug(); // Letzten Versuch verhauen
     	}
-    	else checkzug();
+    	else checkzug(); // Wurf wird abgebrochen, wenn kein Zug möglich ist -> Nächster Spieler
     	System.out.println("Spieler am Zug:" + spieleramzug);
     }
     
+	/**
+	* Prüfen ob ein Zug möglich ist
+	*/
     private void checkzug() 
     {
     	MAEDNSpieler sp = getSpieler(spieleramzug); // Farbe auswähle
@@ -64,13 +70,20 @@ public class MAEDNGame {
     		System.out.println("Würfel wird gelöscht -> Blockiersicherung");
     	}	
     }
-        
+    
+	/**
+	* Gibt zurück welcher Spieler am Zug ist
+	* @return gibt den Wert zurück welcher Spieler am Zug ist
+	*/
     public int getspieleramzug()
     {
     	return spieleramzug;
     }
     
-    // Führt ein Kommando aus  (Funktion für Debug)
+	/**
+	* Führt ein Kommando aus  (Funktion für Debug)
+	* @param Kommando (String)
+	*/
     public void com(String com)
     {
     	System.out.println("Kommando");
@@ -82,7 +95,12 @@ public class MAEDNGame {
     	}
     }
     
-	// Der Zug wird ausgeführt
+	/**
+	* Der Zug wird ausgeführt (KLICK auf Spielfigur)
+	* @param Die FarbID
+	* @param Die SpielfigurID
+	* @return Den Wert der Spielfigur
+	*/
     public int zug(int farbe, int id)
     {
     	System.out.println("KLICK!");
@@ -120,20 +138,30 @@ public class MAEDNGame {
     	return sp.getFigurFort(id); // Gibt den aktuellen Spielfigurenfortschritt zurück
     }
     
-    // List mit zu ziehenden Figuren (außerhalb der geklickten Figuren)
+	/**
+	* List mit zu ziehenden Figuren (außerhalb der geklickten Figuren)
+	* Diese Liste hilft alle rausgeschmissenen Figuren mitzubewegen
+	* @return Eine Liste mit Spielfiguren die außerhalb der angeklickten Figur bewegt werden
+	*/
     public List<String> getMoveList()
     {
     	List <String> rlist = zugList;
     	return rlist;
     }
     
-    // löscht die Liste mit den noch zu tätigen Zügen auf dem Spielfeld 
+	/**
+	* löscht die Liste mit den noch zu tätigen Zügen auf dem Spielfeld
+	*/
     public void clearMoveList()
     {
     	zugList.clear(); 
     }
     
-    // Spielerobjekt ausgeben
+	/**
+	* Spielerobjekt ausgeben
+	* @param Die FarbID
+	* @return Das Objekt des Spielers
+	*/
     private MAEDNSpieler getSpieler(int farbe)
     {
     	MAEDNSpieler sp = null;
@@ -155,7 +183,12 @@ public class MAEDNGame {
 		return sp;
     }
     
-    // Überprüfen ob eine Spielfigur rausgeschmissen werden kann
+	/**
+	* Überprüfen ob eine Spielfigur rausgeschmissen werden kann
+	* @param Der Rausschmeißer
+	* @param Der Wert des Feldes
+	* @return Array mit Farbe und ID der rauszuschmeißenden Figur
+	*/
     public int[] kickcheck(int req, int val)
     { //req = request -> derjenige, der den Zug gemacht hat
     	int[]ret = new int[2];
@@ -177,26 +210,13 @@ public class MAEDNGame {
     	return ret;
     }
    
-    // Gibt den aktuellen Wurf des Würfels zurück
+	/**
+	* Gibt den aktuellen Wurf des Würfels zurück
+	* @return Wurf
+	*/
     public int getWurf()
     {
     	return wuerfel.getWurf();
     }
-    
-    // Prüft ob ein Zug möglich ist
-	public int wurfki(int farbe,int  wurf)
-	{
-		// Spieler & Gegner einlesen
-    	//Prüfen ob Wurf über 0
-    	if (wurf > 0)
-    	{
-    		// für jede Figur
-        	for (int i= 1; i < 5;i++)
-        	{
-        		
-        	}
-    	}
-    	return 0; // Rückgabe der ziehbaren ID, Wenn 0 Kein Zug möglich(platzhalter) 
-	}
 	// Ende
 }

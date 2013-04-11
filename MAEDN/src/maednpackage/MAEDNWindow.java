@@ -1,8 +1,8 @@
 package maednpackage;
 
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JFrame; // Der Rahmen
+import javax.swing.JLabel; // Labels
 import java.awt.Color; // Farben
 import java.awt.event.MouseAdapter; // Mausevent
 import java.awt.event.MouseEvent;
@@ -13,14 +13,14 @@ import javax.swing.JButton; // Mausevent
 
 public class MAEDNWindow {
 
-	private JFrame frmMenschaergereDich;
-	private JTextField textFieldCom;
+	private JFrame frmMenschaergereDich; // Der Frame in dem das Programm angezeigt wird
+	private JTextField textFieldCom; // Das Komando Textfeld
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() { // Ereigniswarteschleife später aufrufen (verwenden da nur ein Thread für GUI möglich)
 			public void run() {
 				try { // Versuche
 					MAEDNWindow window = new MAEDNWindow(); // Fenster öffnen
@@ -37,7 +37,7 @@ public class MAEDNWindow {
 	 */
 	public MAEDNWindow() {
 		initialize();// Spielfeld erschaffen
-		System.out.println("Form initialisiert");
+		System.out.println("Form initialisiert"); // Konsolenkommentar zum Debug
 	}
 
 	/**
@@ -45,8 +45,8 @@ public class MAEDNWindow {
 	 */
 	private void initialize() {
 		// Der Rahmen der das Gesammte Java Projekt umgibt
-		frmMenschaergereDich = new JFrame();
-		frmMenschaergereDich.setResizable(false);
+		frmMenschaergereDich = new JFrame(); // JFrame Objekt initialisieren
+		frmMenschaergereDich.setResizable(false); // Form kann nicht größer gemacht werden
 		frmMenschaergereDich.setTitle("Mensch \u00C4rgere Dich Nicht"); // Titel des Fensters
 		frmMenschaergereDich.getContentPane().setBackground(new Color(240, 230, 140)); // HintergrundOrange
 		frmMenschaergereDich.setBounds(100, 100, 600, 620); // Größe
@@ -54,18 +54,9 @@ public class MAEDNWindow {
 		frmMenschaergereDich.getContentPane().setLayout(null);//Layoutmanager
 		
 		// Objekt um die Positionen der Figuren zu managen
-		final MADENPositions posi = new MADENPositions();
+		final MADENPositions posi = new MADENPositions(); // POSI ist unsere Klasse über die wir mit dem Spiel kommunizieren
 		
 		// ---------- Spielfiguren Generieren ----------
-		// Figuren Rot
-		final JLabel lblMRed1 = new JLabel(posi.getPic(1)); // Blaue Spielfigur wird Bild zugewiesen
-		lblMRed1.addMouseListener(new MouseAdapter() { // Klickevent
-			@Override
-			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				lblMRed1.setLocation(posi.zug(1,1));
-			}
-		});
-		
 		// Würfel 
 		JLabel lblWuerfel = new JLabel(posi.getPic(5));
 		lblWuerfel.addMouseListener(new MouseAdapter() {
@@ -79,16 +70,25 @@ public class MAEDNWindow {
 		lblWuerfel.setLocation(new Point(265, 265));// Position
 		posi.setWuerfel( lblWuerfel); // Würfel an die Posi Klasse übergeben, damit er modifiziert werden kann
 		frmMenschaergereDich.getContentPane().add(lblWuerfel);
+		
+		// Figuren Rot
+		final JLabel lblMRed1 = new JLabel(posi.getPic(1)); // Rote Spielfigur wird Bild zugewiesen, Final ist hier nötig damit später auf das Label refferenziert werden kann.
+		lblMRed1.addMouseListener(new MouseAdapter() { // Klickevent
+			@Override
+			public void mouseClicked(MouseEvent arg0) { // Klickevent
+				lblMRed1.setLocation(posi.zug(1,1)); // Zug auslösen
+			}
+		});
 		lblMRed1.setSize(46, 46); // Größe
 		lblMRed1.setLocation(MADENPositions.place(1, 1,0));// Position
 		posi.setLabel(1,1,lblMRed1); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed1); // Und Ferig, ab aufs Spielfeld mit dir
 		
-		final JLabel lblMRed2 = new JLabel(posi.getPic(1)); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMRed2 = new JLabel(posi.getPic(1)); // Rote Spielfigur wird Bild zugewiesen
 		lblMRed2.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
-				lblMRed2.setLocation(posi.zug(1,2));
+				lblMRed2.setLocation(posi.zug(1,2)); /// Zug auslösen
 			}
 		});
 		lblMRed2.setSize(46, 46); // Größe
@@ -96,7 +96,7 @@ public class MAEDNWindow {
 		posi.setLabel(1,2,lblMRed2); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed2);
 		
-		final JLabel lblMRed3 = new JLabel(posi.getPic(1)); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMRed3 = new JLabel(posi.getPic(1)); // rote Spielfigur wird Bild zugewiesen
 		lblMRed3.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -109,7 +109,7 @@ public class MAEDNWindow {
 		posi.setLabel(1,3,lblMRed3); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed3);
 		
-		final JLabel lblMRed4 = new JLabel(posi.getPic(1)); // Blaue Spielfigur wird Bild zugewiesen
+		final JLabel lblMRed4 = new JLabel(posi.getPic(1)); // Rote Spielfigur wird Bild zugewiesen
 		lblMRed4.addMouseListener(new MouseAdapter() { // Klickevent
 			@Override
 			public void mouseClicked(MouseEvent arg0) { // Klickevent
@@ -270,6 +270,7 @@ public class MAEDNWindow {
 		frmMenschaergereDich.getContentPane().add(lblMYellow4);
 		// ---------- Spielfiguren generieren Ende ----------
 		
+		//Infolabel
 		final JLabel lblInfo = new JLabel("");
 		lblInfo.setBounds(12, 368, 203, 40);
 		posi.setWuerfelInfo( lblInfo);
@@ -280,6 +281,7 @@ public class MAEDNWindow {
 		lblBackground.setBounds(0, 0, 580, 580); // Größe
 		frmMenschaergereDich.getContentPane().add(lblBackground); // An den Frame anheften
 		
+		// Textfeld für Debugfunktionen
 		textFieldCom = new JTextField();
 		textFieldCom.addMouseListener(new MouseAdapter() {
 			@Override

@@ -58,7 +58,11 @@ public class MADENPositions {
     
     // Funktionen
     
-    // gibt das Bild, dass angefragt wird zurück
+	/**
+	* gibt das Bild, dass angefragt wird zurück
+	* @param Eine ID von dem angeforderten Bild
+	* @return Ein ImageIcon
+	*/
     public ImageIcon getPic(int id)
     {
     	ImageIcon ret = null;
@@ -107,17 +111,28 @@ public class MADENPositions {
 		return ret;
     }
     
-    // Setzt das Würfelobjekt
+	/**
+	* Setzt das Würfelobjekt (Objektverweis)
+	* @param JLabel des Würfels
+	*/
     public void setWuerfel(JLabel label) {
     	lblWuerfel = label;
     }
     
-    // Setzt WürfelInfoObjekt
+	/**
+	* Setzt WürfelInfoObjekt (Objektverweis)
+	* @param JLabel des WürfelInfoLabels
+	*/
     public void setWuerfelInfo(JLabel label) {
     	lblInfo = label;
     }
     
-	// Setzt das Objekt für um die Spielfigur ansprechen zu können
+	/**
+	* Setzt das Objekt für um die Spielfigur ansprechen zu können
+	* @param FarbID
+	* @param SpielfigurID
+	* @param JLabelverweis
+	*/
     public void setLabel(int farbe, int id, JLabel label) {
 		switch (farbe)
 		{
@@ -192,7 +207,12 @@ public class MADENPositions {
 		}
     }
 	
-	// Gibt das ausgewählte Objekt zurück
+	/**
+	* Gibt das ausgewählte Objekt zurück
+	* @param FarbID
+	* @param SpielfigurID
+	* @return JLabel Objektverweis
+	*/
 	public JLabel getLabel(int farbe, int id) {
 	 JLabel label = null;
 		switch (farbe)
@@ -269,7 +289,12 @@ public class MADENPositions {
 		return label;
     }
 	
-	// Zugfunktion
+	/**
+	* Zugfunktion
+	* @param FarbID
+	* @param SpielfigurID
+	* @return Der Punkt (Posititon) der Spielfigur
+	*/
 	public Point zug(int farbe, int id)
 	{
 		Point p = null;
@@ -284,7 +309,12 @@ public class MADENPositions {
 		return p;
 	}
 	
-	// Gibt die aktuelle Position einer Figur als Punkt zurück
+	/**
+	* Gibt die aktuelle Position einer Figur als Punkt zurück
+	* @param FarbID der Spielfigur
+	* @param ID der Spielfigur
+	* @return Der aktuelle Punkt der Figur
+	*/
 	public Point pUpdate(int farbe, int id)
 	{
 		Point p = null;
@@ -293,7 +323,10 @@ public class MADENPositions {
 		return p;
 	}
 	
-	// Updatet alle Figuren aus der Updatelist
+	// 
+	/**
+	* Updatet alle Figuren aus der Updatelist
+	*/
 	private void update()
 	{
 		List <String> list = maedn.getMoveList();
@@ -307,7 +340,9 @@ public class MADENPositions {
 		maedn.clearMoveList();
 	}
 	
-	// Der Würfel wird angeklickt und startet diese Funktion
+	/**
+	* Der Würfel wird angeklickt (Würfelmechanismus)
+	*/
 	public void klickWuerfel()
 	{
 		maedn.wuerfeln();
@@ -322,13 +357,20 @@ public class MADENPositions {
 		lblWuerfel.setLocation(wuerfelplace(maedn.getspieleramzug()));
 	}
 	
-	// Gibt ein Komando (CHEAT) an die Game Klasse weiter
+	/**
+	* Gibt ein Komando (CHEAT) an die Game Klasse weiter
+	* @param Kommando
+	*/
 	public void parsecom(String com)
 	{
 		maedn.com(com);
 	}
 	
-	// Gibt die Position des Würfels zurück
+	/**
+	* Gibt die Position des Würfels zurück
+	* @param Die ID der Farbe
+	* @return Den Punkt des Würfels
+	*/
 	public static Point wuerfelplace(int farbe)
 	{
 		Point ort = new Point(1, 1);
@@ -341,7 +383,13 @@ public class MADENPositions {
         return ort;
 	}
 	
-	// Funktion gibt die Position der aktuel geklickten farbe zurück
+	/**
+	* Funktion gibt die Position der aktuel geklickten farbe zurück
+	* @param Die FarbID der Spielfigur
+	* @param Die ID der Spielfigur
+	* @param Die SpielfeldID auf der die Spielfigur steht
+	* @return Einen Punkt (Position) auf dem die Spielfigur stehen soll
+	*/
     public static Point place(int farbe, int id, int zahl)
     { // Positionen Ermitteln Spielfeld oder farbenspezifische Positionen
         if (zahl > 0 && zahl < 41) // Wenn die Position im Spielverlauf ist

@@ -4,25 +4,39 @@ public class MAEDNFigur {
 	private int fFortschritt = 0; // Fortschritt der Figur wird hier gespeichert
 	private int fFarbe = 1; // Farbe der Figur wird hier gespeichert
 	
-	// Konstruktor: Initialisiert das Objekt -> setzt die Farbe
+	// Methoden
+	/**
+	* Konstruktor: Initialisiert das Objekt -> setzt die Farbe
+	* @param Die ID der Farbe
+	*/
 	public MAEDNFigur(int farbe)
 	{
 		fFarbe = farbe; // Setzt die Farbe der Figur
 	}
-	
-	// Der Aktuelle Fortschritt wird zurück gegeben
+
+	/**
+	* Der Aktuelle Fortschritt wird zurück gegeben
+	* @return Den Fortschritt der Figur (Spielfeldwert)
+	*/
 	public int getFortschritt()
 	{
 		return convertToFarbe(fFortschritt); // Befor der Fortschritt zurück gegeben wird, wird der Wrt umgewandelt in die Farbe der Spielfigur
 	}
 	
-	// Gibt den aktuellen Fortschritt zurück ohne die Farbdifferenzu umzurechnen
+	/**
+	* Gibt den aktuellen Fortschritt zurück ohne die Farbdifferenzu umzurechnen
+	* @return Den Fortschritt der Figur (Interne ID)
+	*/
 	public int getFortschrittRaw()
 	{
 		return fFortschritt;
 	}
 	
-	// Schritt wird zum Fortschritt der Figur hinzugerechnet
+	/**
+	* Schritt wird zum Fortschritt der Figur hinzugerechnet
+	* @param Die Schritte, die zur Figur addiert werden sollen
+	* @return Das Objekt der Spielfigur
+	*/
 	public void addFortschritt(int schritt)
 	{
 		if (fFortschritt == 0)
@@ -35,27 +49,41 @@ public class MAEDNFigur {
 		}
 	}
 	
-	// Figur wurde rausgeschmissen
+	/**
+	* Figur wurde rausgeschmissen
+	*/
 	public void gekickt()
 	{
 		fFortschritt = 0;
 	}
 	
-	// Kollisionserkennung der Figur
+	/**
+	* Kollisionserkennung der Figur
+	* @param Die ID des zu überprüfenden Feldes
+	* @return True wenn Kollision / False wenn keine Kollision
+	*/
 	public boolean collision(int value)
 	{
 		if (value == convertToFarbe(fFortschritt)) return true;
 		else return false;
 	}
 	
-	// Kollisionserkennung der Figur für die eigene Farbe
+	/**
+	* Kollisionserkennung der Figur (Raw - Farbintern)
+	* @param Die ID des zu überprüfenden Feldes
+	* @return True wenn Kollision / False wenn keine Kollision mit eigener Farbe
+	*/
 	public boolean collisionRaw(int value)
 	{
 		if (value == fFortschritt) return true;
 		else return false;
 	}
 	
-	// Wandelt den Spielfeldwert in den Internen Fortschritt um
+	/**
+	* Wandelt den Internen Fortschritt in den Spielfeldwert um
+	* @param Die Zahl die umgewandelt werden soll
+	* @return Die umgewandelte Zahl
+	*/
 	private int convertToFarbe(int zahl)
     {
 		// Werte zwischen 1 und 40 werden versetzt damit die Farbe auf dem richtigen Feld im Spielfeld steht

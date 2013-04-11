@@ -1,9 +1,9 @@
 package maednpackage;
 
 public class MAEDNSpieler {
-	private int sFarbe;
-	private String sFarbeName;
-	//private String sSpielerName = "Spieler";
+	private int sFarbe; // Spielerfarbe
+	private String sFarbeName; // Name der Farbe
+	//private String sSpielerName = "Spieler"; // Für Menu / Netzwerkanzeige oder was auch immer
 	
 	// die Spielfiguren
 	private MAEDNFigur sFigur1; 
@@ -11,7 +11,10 @@ public class MAEDNSpieler {
 	private MAEDNFigur sFigur3;
 	private MAEDNFigur sFigur4;
 		
-	// Konstruktor, wird beim Erschaffen des Objektes ausgeführt
+	/**
+	* Konstruktor, wird beim Erschaffen des Objektes ausgeführt
+	* @param Die ID der Farbe
+	*/
 	public MAEDNSpieler(int farbe)
 	{
 		if (farbe > 4 || farbe < 1) farbe = 1; // Sicherheitskontrolle, dass Farbe gültig ist
@@ -24,13 +27,20 @@ public class MAEDNSpieler {
 		sFigur4 = new MAEDNFigur(farbe);
 	}
 	
-	// Name der Farbe zurück geben
+	/**
+	* Gibt den Namen der Farbe zurück, die am Zug ist
+	* @return Name der Farbe
+	*/
 	public String getFarbeName()
 	{
 		return sFarbeName;
 	}
 	
-	// Gibt das Objekt der ausgewählten Spielfigur zurück
+	/**
+	* Gibt das Objekt der ausgewählten Spielfigur zurück
+	* @param Die ID der Figur
+	* @return Das Objekt der Spielfigur
+	*/
 	private MAEDNFigur fig(int id)
 	{
 		MAEDNFigur figur = null;
@@ -52,7 +62,10 @@ public class MAEDNSpieler {
 		return figur;
 	}
 	
-	// Wert der Spielfigur zurück geben und umwandeln
+	/**
+	* Rausschmissfunktion
+	* @param Die ID der Figur
+	*/
 	public void kickFigur(int id)
 	{
 		MAEDNFigur figur =  fig(id);
@@ -62,7 +75,11 @@ public class MAEDNSpieler {
 		}
 	}
 	
-	// Wert der Spielfigur zurück geben und umwandeln
+	/**
+	* Wert der Spielfigur zurück geben und umwandeln
+	* @param Die ID der Figur
+	* @return Wert der Spielfigur (auf welchen Spielfeld steht sie?)
+	*/
 	public int getFigurFort(int id)
 	{
 		MAEDNFigur figur =  fig(id);
@@ -70,7 +87,11 @@ public class MAEDNSpieler {
 		return figur.getFortschritt();
 	}
 	
-	// Wert der Spielfigur zurück geben ohne Farbumrechnung
+	/**
+	* Wert der Spielfigur zurück geben ohne Farbumrechnung
+	* @param Die ID der Figur
+	* @return Wert der Spielfigur (Interner Wert / Nicht auf Spieleldwert umgerechnet)
+	*/
 	public int getFigurFortRaw(int id)
 	{
 		MAEDNFigur figur =  fig(id);
@@ -78,7 +99,11 @@ public class MAEDNSpieler {
 		return figur.getFortschrittRaw();
 	}
 	
-	// Addiert die angegebenen Schritte zum Fortschritt der Figur
+	/**
+	* Addiert die angegebenen Schritte zum Fortschritt der Figur
+	* @param Die ID der Figur
+	* @param Der Wert des Würfels
+	*/
 	public void addFigurFort(int id, int wurf)
 	{
 		//JOptionPane.showMessageDialog(null, wurf);
@@ -86,7 +111,12 @@ public class MAEDNSpieler {
 		if (figur != null && wurfmoeglich(id,  wurf)) figur.addFortschritt(wurf); // addiert den Wurf dazu wenn die Regeln es erlauben
 	}
 	
-    // Kollisionsdetection im Objekt
+	/**
+	* Kollisionsdetection Objektintern
+	* @param Die ID der zu überprüfenden Figur (Die Figur die gerade bewegt wird)
+	* @param Das Spielfeld was überprüft werden soll
+	* @return True wenn ein Zug mit irgendeiner Figur möglich ist, False wenn kein Zug möglich ist
+	*/
     private boolean checkcollideInside(int id, int value)
     {
     	boolean ret = false;
@@ -102,11 +132,14 @@ public class MAEDNSpieler {
     	return ret;
     }
     
-    // Kollisionsdetection auserhalb des Objektes
+	/**
+	* Kollisionsdetection auserhalb des Objektes
+	* @param Die zu überprüfende Zahl (Spielfeld)
+	* @return Wenn keine Kollision dann 0 Sonst einen Wert über 0
+	*/
     public int checkcollide(int zahl)
     {
     	int ret = 0;
-    	//JOptionPane.showMessageDialog(null, zahl);
     	if (zahl > 0 && zahl < 41)
     	{
 	    	for (int i = 1; i < 5; i++)
@@ -122,11 +155,10 @@ public class MAEDNSpieler {
     	return ret;
     }
     
-    // Guckt nach wieviele Figuren sich im Haus befinden
-    //Wert zwischen eins und null
-    /*
-     * 
-     * */
+	/**
+	* Guckt nach wieviele Figuren sich im Haus befinden
+	* @return Anzahl der sich im Haus befindlichen Figuren
+	*/
     private int getFigurImHaus()
     {
     	int geswert = 0;
@@ -138,7 +170,10 @@ public class MAEDNSpieler {
     	return geswert;
     }
     
-    // Zählt alle Figurenwerte zusammen (maxrückgabewert: 170)
+	/**
+	* Zählt alle Figurenwerte zusammen 
+	* @return Gesamtwert aller Figuren (maxrückgabewert: 170)
+	*/
     private int getGesamtFigurWert()
     {
     	int geswert = 0;
@@ -149,7 +184,10 @@ public class MAEDNSpieler {
     	return geswert;
     }
     
-    // gibt die Anzahl der Wurfversuche zurück
+	/**
+	* gibt die Anzahl der Wurfversuche zurück
+	* @return True wenn ein Mehrfachwurf möglich ist (Alle Figuren im Haus), False wenn nicht
+	*/
     public boolean mehrfachwurf()
     {
     	int draussen = 4 - getFigurImHaus();
@@ -164,7 +202,11 @@ public class MAEDNSpieler {
         return mehrfachwurf;
     }
     
-    // Prüft ob Zug möglich ist
+    /**
+	* prüft ob ein Zug möglich ist
+	* @param Die gewürfelte Zahl
+	* @return True wenn ein Zug mit irgendeiner Figur möglich ist, False wenn kein Zug möglich ist
+	*/
     public boolean checkpossibly(int wurf)
     {
     	if(wurfmoeglich(1,wurf) ||
@@ -174,9 +216,11 @@ public class MAEDNSpieler {
     	else return false;
     }
     
-    // Ist Spielfelt besetzt?
-    // prüft ob die zahl in irgendeiner Spielfigur dieser Farbe enthalten ist
-    // Wert NULL wenn keine Figur der eigenen Farbe auf dem Feld steht oder Wert 1 wenn eine Figur der eigenen Farbe auf dem Feld steht
+	/**
+	* prüft ob auf diesem Feld eine Spielfigur steht
+	* @param Das zu überprüfende Spielfeld
+	* @return Wenn Null, dann steht keine Figur der eigenen Farbe auf dem Spielfeld. Wenn 1, dann steht eine Figur der eigenen Farbe auf dem Feld
+	*/
     private int enthalten(int zahl)
     {
     	int erg = 0;
@@ -190,7 +234,12 @@ public class MAEDNSpieler {
     	return erg;
     }
     
-    // prüft ob der Zug möglich ist
+	/**
+	* prüft ob der Zug möglich ist
+	* @param Die ID der zu überprüfenden Spielfigur
+	* @param Die gewürfelte Zahl (wurf)
+	* @return Wahr wenn ein Spielzug mit dieser Figur möglich ist
+	*/
 	private boolean wurfmoeglich(int id, int wurf)
 	{
 		boolean wurfmoeglich = true;
