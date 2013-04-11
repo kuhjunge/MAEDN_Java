@@ -4,8 +4,8 @@ public class MAEDNWuerfel {
 	
 	// Variabeln
 	private int wurf = 0; // Hier wird der Würfelwert gespeichert
-	private int wurfzaehler = 0;
-	private int wurfversuch = 0;
+	private int wurfzaehler = 0; // Jeder Wurf wird mitgezählt
+	private int wurfversuch = 0; // Anzahl der Versuche 
 	private boolean forceenable = false;
 	
 	// Methoden
