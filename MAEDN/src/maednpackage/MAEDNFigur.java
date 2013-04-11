@@ -7,7 +7,7 @@ public class MAEDNFigur {
 	// Methoden
 	/**
 	* Konstruktor: Initialisiert das Objekt -> setzt die Farbe
-	* @param Die ID der Farbe
+	* @param id - Die ID der Farbe
 	*/
 	public MAEDNFigur(int farbe)
 	{
@@ -34,7 +34,7 @@ public class MAEDNFigur {
 	
 	/**
 	* Schritt wird zum Fortschritt der Figur hinzugerechnet
-	* @param Die Schritte, die zur Figur addiert werden sollen
+	* @param schritt -  Die Schritte, die zur Figur addiert werden sollen
 	* @return Das Objekt der Spielfigur
 	*/
 	public void addFortschritt(int schritt)
@@ -59,7 +59,7 @@ public class MAEDNFigur {
 	
 	/**
 	* Kollisionserkennung der Figur
-	* @param Die ID des zu überprüfenden Feldes
+	* @param id - Die ID des zu überprüfenden Feldes
 	* @return True wenn Kollision / False wenn keine Kollision
 	*/
 	public boolean collision(int value)
@@ -70,7 +70,7 @@ public class MAEDNFigur {
 	
 	/**
 	* Kollisionserkennung der Figur (Raw - Farbintern)
-	* @param Die ID des zu überprüfenden Feldes
+	* @param value - Die ID des zu überprüfenden Feldes
 	* @return True wenn Kollision / False wenn keine Kollision mit eigener Farbe
 	*/
 	public boolean collisionRaw(int value)
@@ -81,7 +81,7 @@ public class MAEDNFigur {
 	
 	/**
 	* Wandelt den Internen Fortschritt in den Spielfeldwert um
-	* @param Die Zahl die umgewandelt werden soll
+	* @param zahl - Die Zahl die umgewandelt werden soll
 	* @return Die umgewandelte Zahl
 	*/
 	private int convertToFarbe(int zahl)

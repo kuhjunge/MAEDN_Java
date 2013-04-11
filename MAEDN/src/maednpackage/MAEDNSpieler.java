@@ -13,7 +13,7 @@ public class MAEDNSpieler {
 		
 	/**
 	* Konstruktor, wird beim Erschaffen des Objektes ausgeführt
-	* @param Die ID der Farbe
+	* @param farbe - Die ID der Farbe
 	*/
 	public MAEDNSpieler(int farbe)
 	{
@@ -38,7 +38,7 @@ public class MAEDNSpieler {
 	
 	/**
 	* Gibt das Objekt der ausgewählten Spielfigur zurück
-	* @param Die ID der Figur
+	* @param id - Die ID der Figur
 	* @return Das Objekt der Spielfigur
 	*/
 	private MAEDNFigur fig(int id)
@@ -64,7 +64,7 @@ public class MAEDNSpieler {
 	
 	/**
 	* Rausschmissfunktion
-	* @param Die ID der Figur
+	* @param id - Die ID der Figur
 	*/
 	public void kickFigur(int id)
 	{
@@ -77,7 +77,7 @@ public class MAEDNSpieler {
 	
 	/**
 	* Wert der Spielfigur zurück geben und umwandeln
-	* @param Die ID der Figur
+	* @param id - Die ID der Figur
 	* @return Wert der Spielfigur (auf welchen Spielfeld steht sie?)
 	*/
 	public int getFigurFort(int id)
@@ -89,7 +89,7 @@ public class MAEDNSpieler {
 	
 	/**
 	* Wert der Spielfigur zurück geben ohne Farbumrechnung
-	* @param Die ID der Figur
+	* @param id - Die ID der Figur
 	* @return Wert der Spielfigur (Interner Wert / Nicht auf Spieleldwert umgerechnet)
 	*/
 	public int getFigurFortRaw(int id)
@@ -101,8 +101,8 @@ public class MAEDNSpieler {
 	
 	/**
 	* Addiert die angegebenen Schritte zum Fortschritt der Figur
-	* @param Die ID der Figur
-	* @param Der Wert des Würfels
+	* @param id - Die ID der Figur
+	* @param wurf - Der Wert des Würfels
 	*/
 	public void addFigurFort(int id, int wurf)
 	{
@@ -113,8 +113,8 @@ public class MAEDNSpieler {
 	
 	/**
 	* Kollisionsdetection Objektintern
-	* @param Die ID der zu überprüfenden Figur (Die Figur die gerade bewegt wird)
-	* @param Das Spielfeld was überprüft werden soll
+	* @param id - Die ID der zu überprüfenden Figur (Die Figur die gerade bewegt wird)
+	* @param value - Das Spielfeld was überprüft werden soll
 	* @return True wenn ein Zug mit irgendeiner Figur möglich ist, False wenn kein Zug möglich ist
 	*/
     private boolean checkcollideInside(int id, int value)
@@ -134,7 +134,7 @@ public class MAEDNSpieler {
     
 	/**
 	* Kollisionsdetection auserhalb des Objektes
-	* @param Die zu überprüfende Zahl (Spielfeld)
+	* @param zahl - Die zu überprüfende Zahl (Spielfeld)
 	* @return Wenn keine Kollision dann 0 Sonst einen Wert über 0
 	*/
     public int checkcollide(int zahl)
@@ -204,7 +204,7 @@ public class MAEDNSpieler {
     
     /**
 	* prüft ob ein Zug möglich ist
-	* @param Die gewürfelte Zahl
+	* @param wurf - Die gewürfelte Zahl
 	* @return True wenn ein Zug mit irgendeiner Figur möglich ist, False wenn kein Zug möglich ist
 	*/
     public boolean checkpossibly(int wurf)
@@ -218,7 +218,7 @@ public class MAEDNSpieler {
     
 	/**
 	* prüft ob auf diesem Feld eine Spielfigur steht
-	* @param Das zu überprüfende Spielfeld
+	* @param zahl - Das zu überprüfende Spielfeld
 	* @return Wenn Null, dann steht keine Figur der eigenen Farbe auf dem Spielfeld. Wenn 1, dann steht eine Figur der eigenen Farbe auf dem Feld
 	*/
     private int enthalten(int zahl)
@@ -236,8 +236,8 @@ public class MAEDNSpieler {
     
 	/**
 	* prüft ob der Zug möglich ist
-	* @param Die ID der zu überprüfenden Spielfigur
-	* @param Die gewürfelte Zahl (wurf)
+	* @param id - Die ID der zu überprüfenden Spielfigur
+	* @param wurf - Die gewürfelte Zahl (wurf)
 	* @return Wahr wenn ein Spielzug mit dieser Figur möglich ist
 	*/
 	private boolean wurfmoeglich(int id, int wurf)

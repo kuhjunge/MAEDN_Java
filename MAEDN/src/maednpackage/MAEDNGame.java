@@ -18,8 +18,8 @@ public class MAEDNGame {
 	// Methoden
 	/**
 	* Aktueller Fortschritt der Figur
-	* @param Die FarbID
-	* @param Die ID der Figur
+	* @param farbe - Die FarbID
+	* @param id - Die ID der Figur
 	* @return Den Wert der Spielfigur
 	*/
     public int getFigurFort(int farbe, int id)
@@ -82,7 +82,7 @@ public class MAEDNGame {
     
 	/**
 	* Führt ein Kommando aus  (Funktion für Debug)
-	* @param Kommando (String)
+	* @param com - Kommando (String)
 	*/
     public void com(String com)
     {
@@ -97,8 +97,8 @@ public class MAEDNGame {
     
 	/**
 	* Der Zug wird ausgeführt (KLICK auf Spielfigur)
-	* @param Die FarbID
-	* @param Die SpielfigurID
+	* @param farbe - Die FarbID
+	* @param id - Die SpielfigurID
 	* @return Den Wert der Spielfigur
 	*/
     public int zug(int farbe, int id)
@@ -159,7 +159,7 @@ public class MAEDNGame {
     
 	/**
 	* Spielerobjekt ausgeben
-	* @param Die FarbID
+	* @param farbe - Die FarbID
 	* @return Das Objekt des Spielers
 	*/
     private MAEDNSpieler getSpieler(int farbe)
@@ -185,8 +185,8 @@ public class MAEDNGame {
     
 	/**
 	* Überprüfen ob eine Spielfigur rausgeschmissen werden kann
-	* @param Der Rausschmeißer
-	* @param Der Wert des Feldes
+	* @param req - Der Rausschmeißer
+	* @param val - Der Wert des Feldes
 	* @return Array mit Farbe und ID der rauszuschmeißenden Figur
 	*/
     public int[] kickcheck(int req, int val)

@@ -11,8 +11,8 @@ public class MAEDNWuerfel {
 	// Methoden
 	/**
 	* Zufallszahl erzeugen
-	* @param Die niedrigste Zahl
-	* @param Die höchste Zahl
+	* @param low - Die niedrigste Zahl
+	* @param high - Die höchste Zahl
 	* @return Eine Zufallszahl zwischen den angegebenen low - high Werten
 	*/
 	private static int zufallszahl(double low, double high) {
@@ -43,7 +43,7 @@ public class MAEDNWuerfel {
 	
 	/**
 	* Setzt den Wert des Würfels manuell (Debug / Cheat)
-	* @param Die gewünschte Würfelzahl
+	* @param swurf - Die gewünschte Würfelzahl
 	*/
 	public void setWurf(int swurf)
 	{

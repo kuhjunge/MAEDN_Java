@@ -60,7 +60,7 @@ public class MADENPositions {
     
 	/**
 	* gibt das Bild, dass angefragt wird zurück
-	* @param Eine ID von dem angeforderten Bild
+	* @param id - Eine ID von dem angeforderten Bild
 	* @return Ein ImageIcon
 	*/
     public ImageIcon getPic(int id)
@@ -113,7 +113,7 @@ public class MADENPositions {
     
 	/**
 	* Setzt das Würfelobjekt (Objektverweis)
-	* @param JLabel des Würfels
+	* @param label - JLabel des Würfels
 	*/
     public void setWuerfel(JLabel label) {
     	lblWuerfel = label;
@@ -121,7 +121,7 @@ public class MADENPositions {
     
 	/**
 	* Setzt WürfelInfoObjekt (Objektverweis)
-	* @param JLabel des WürfelInfoLabels
+	* @param label - JLabel des WürfelInfoLabels
 	*/
     public void setWuerfelInfo(JLabel label) {
     	lblInfo = label;
@@ -129,9 +129,9 @@ public class MADENPositions {
     
 	/**
 	* Setzt das Objekt für um die Spielfigur ansprechen zu können
-	* @param FarbID
-	* @param SpielfigurID
-	* @param JLabelverweis
+	* @param farbe - FarbID
+	* @param id - SpielfigurID
+	* @param label - JLabelverweis
 	*/
     public void setLabel(int farbe, int id, JLabel label) {
 		switch (farbe)
@@ -209,8 +209,8 @@ public class MADENPositions {
 	
 	/**
 	* Gibt das ausgewählte Objekt zurück
-	* @param FarbID
-	* @param SpielfigurID
+	* @param farbe - FarbID
+	* @param id - SpielfigurID
 	* @return JLabel Objektverweis
 	*/
 	public JLabel getLabel(int farbe, int id) {
@@ -291,8 +291,8 @@ public class MADENPositions {
 	
 	/**
 	* Zugfunktion
-	* @param FarbID
-	* @param SpielfigurID
+	* @param farbe - FarbID
+	* @param id - SpielfigurID
 	* @return Der Punkt (Posititon) der Spielfigur
 	*/
 	public Point zug(int farbe, int id)
@@ -311,8 +311,8 @@ public class MADENPositions {
 	
 	/**
 	* Gibt die aktuelle Position einer Figur als Punkt zurück
-	* @param FarbID der Spielfigur
-	* @param ID der Spielfigur
+	* @param farbe - FarbID der Spielfigur
+	* @param id - ID der Spielfigur
 	* @return Der aktuelle Punkt der Figur
 	*/
 	public Point pUpdate(int farbe, int id)
@@ -359,7 +359,7 @@ public class MADENPositions {
 	
 	/**
 	* Gibt ein Komando (CHEAT) an die Game Klasse weiter
-	* @param Kommando
+	* @param com - Kommando
 	*/
 	public void parsecom(String com)
 	{
@@ -368,7 +368,7 @@ public class MADENPositions {
 	
 	/**
 	* Gibt die Position des Würfels zurück
-	* @param Die ID der Farbe
+	* @param farbe - Die ID der Farbe
 	* @return Den Punkt des Würfels
 	*/
 	public static Point wuerfelplace(int farbe)
@@ -385,9 +385,9 @@ public class MADENPositions {
 	
 	/**
 	* Funktion gibt die Position der aktuel geklickten farbe zurück
-	* @param Die FarbID der Spielfigur
-	* @param Die ID der Spielfigur
-	* @param Die SpielfeldID auf der die Spielfigur steht
+	* @param farbe - Die FarbID der Spielfigur
+	* @param id - Die ID der Spielfigur
+	* @param zahl - Die SpielfeldID auf der die Spielfigur steht
 	* @return Einen Punkt (Position) auf dem die Spielfigur stehen soll
 	*/
     public static Point place(int farbe, int id, int zahl)
