@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class MADENPositions {
+public class MAEDNPositions {
 	// positionierungen
     private static int figX = 23; // Figur Größe der X Achse
     private static int figY = 23; // Figur Größe der Y Achse

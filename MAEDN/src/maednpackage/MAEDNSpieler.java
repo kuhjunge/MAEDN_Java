@@ -138,7 +138,7 @@ public class MAEDNSpieler {
 	* @return Wenn keine Kollision dann 0 Sonst einen Wert über 0
 	*/
     public int checkcollide(int zahl)
-    {
+    { // Diese Methode wird als Beispiel in der Dokumentation verwendet
     	int ret = 0;
     	if (zahl > 0 && zahl < 41)
     	{

@@ -54,7 +54,7 @@ public class MAEDNWindow {
 		frmMenschaergereDich.getContentPane().setLayout(null);//Layoutmanager
 		
 		// Objekt um die Positionen der Figuren zu managen
-		final MADENPositions posi = new MADENPositions(); // POSI ist unsere Klasse über die wir mit dem Spiel kommunizieren
+		final MAEDNPositions posi = new MAEDNPositions(); // POSI ist unsere Klasse über die wir mit dem Spiel kommunizieren
 		
 		// ---------- Spielfiguren Generieren ----------
 		// Würfel 
@@ -80,7 +80,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMRed1.setSize(46, 46); // Größe
-		lblMRed1.setLocation(MADENPositions.place(1, 1,0));// Position
+		lblMRed1.setLocation(MAEDNPositions.place(1, 1,0));// Position
 		posi.setLabel(1,1,lblMRed1); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed1); // Und Ferig, ab aufs Spielfeld mit dir
 		
@@ -92,7 +92,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMRed2.setSize(46, 46); // Größe
-		lblMRed2.setLocation(MADENPositions.place(1, 2,0));// Position
+		lblMRed2.setLocation(MAEDNPositions.place(1, 2,0));// Position
 		posi.setLabel(1,2,lblMRed2); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed2);
 		
@@ -105,7 +105,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMRed3.setSize(46, 46); // Größe
-		lblMRed3.setLocation(MADENPositions.place(1, 3,0));// Position
+		lblMRed3.setLocation(MAEDNPositions.place(1, 3,0));// Position
 		posi.setLabel(1,3,lblMRed3); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed3);
 		
@@ -118,7 +118,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMRed4.setSize(46, 46); // Größe
-		lblMRed4.setLocation(MADENPositions.place(1, 4,0));// Position
+		lblMRed4.setLocation(MAEDNPositions.place(1, 4,0));// Position
 		posi.setLabel(1,4,lblMRed4); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMRed4);
 		
@@ -131,7 +131,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMBlue1.setSize(46, 46); // Größe
-		lblMBlue1.setLocation(MADENPositions.place(2, 1,0));// Position
+		lblMBlue1.setLocation(MAEDNPositions.place(2, 1,0));// Position
 		posi.setLabel(2,1,lblMBlue1); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMBlue1); // Und Ferig, ab aufs Spielfeld mit dir
 		
@@ -143,7 +143,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMBlue2.setSize(46, 46);// Größe
-		lblMBlue2.setLocation(MADENPositions.place(2, 2,0)); // Position
+		lblMBlue2.setLocation(MAEDNPositions.place(2, 2,0)); // Position
 		posi.setLabel(2,2,lblMBlue2); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMBlue2);
 		
@@ -155,7 +155,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMBlue3.setSize(46, 46);// Größe
-		lblMBlue3.setLocation(MADENPositions.place(2, 3,0)); // Position
+		lblMBlue3.setLocation(MAEDNPositions.place(2, 3,0)); // Position
 		posi.setLabel(2,3,lblMBlue3); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMBlue3);
 		
@@ -167,7 +167,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMBlue4.setSize(46, 46);// Größe
-		lblMBlue4.setLocation(MADENPositions.place(2, 4,0)); // Position
+		lblMBlue4.setLocation(MAEDNPositions.place(2, 4,0)); // Position
 		posi.setLabel(2,4,lblMBlue4); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMBlue4);
 		
@@ -180,7 +180,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMGreen1.setSize(46, 46); // Größe
-		lblMGreen1.setLocation(MADENPositions.place(3, 1,0));// Position
+		lblMGreen1.setLocation(MAEDNPositions.place(3, 1,0));// Position
 		posi.setLabel(3,1,lblMGreen1); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMGreen1); // Und Ferig, ab aufs Spielfeld mit dir
 		
@@ -192,7 +192,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMGreen2.setSize(46, 46); // Größe
-		lblMGreen2.setLocation(MADENPositions.place(3, 2,0));// Position
+		lblMGreen2.setLocation(MAEDNPositions.place(3, 2,0));// Position
 		posi.setLabel(3,2,lblMGreen2); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMGreen2);
 		
@@ -204,7 +204,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMGreen3.setSize(46, 46); // Größe
-		lblMGreen3.setLocation(MADENPositions.place(3, 3,0));// Position
+		lblMGreen3.setLocation(MAEDNPositions.place(3, 3,0));// Position
 		posi.setLabel(3,3,lblMGreen3); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMGreen3);
 		
@@ -216,7 +216,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMGreen4.setSize(46, 46); // Größe
-		lblMGreen4.setLocation(MADENPositions.place(3, 4,0));// Position
+		lblMGreen4.setLocation(MAEDNPositions.place(3, 4,0));// Position
 		posi.setLabel(3,4,lblMGreen4); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMGreen4);
 		
@@ -229,7 +229,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMYellow1.setSize(46, 46); // Größe
-		lblMYellow1.setLocation(MADENPositions.place(4, 1,0));// Position
+		lblMYellow1.setLocation(MAEDNPositions.place(4, 1,0));// Position
 		posi.setLabel(4,1,lblMYellow1); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMYellow1); // Und Ferig, ab aufs Spielfeld mit dir
 		
@@ -241,7 +241,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMYellow2.setSize(46, 46); // Größe
-		lblMYellow2.setLocation(MADENPositions.place(4, 2,0));// Position
+		lblMYellow2.setLocation(MAEDNPositions.place(4, 2,0));// Position
 		posi.setLabel(4,2,lblMYellow2); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMYellow2);
 		
@@ -253,7 +253,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMYellow3.setSize(46, 46); // Größe
-		lblMYellow3.setLocation(MADENPositions.place(4, 3,0));// Position
+		lblMYellow3.setLocation(MAEDNPositions.place(4, 3,0));// Position
 		posi.setLabel(4,3,lblMYellow3); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMYellow3);
 		
@@ -265,7 +265,7 @@ public class MAEDNWindow {
 			}
 		});
 		lblMYellow4.setSize(46, 46); // Größe
-		lblMYellow4.setLocation(MADENPositions.place(4, 4,0));// Position
+		lblMYellow4.setLocation(MAEDNPositions.place(4, 4,0));// Position
 		posi.setLabel(4,4,lblMYellow4); // Objektreferenz für Positionsklasse übergeben
 		frmMenschaergereDich.getContentPane().add(lblMYellow4);
 		// ---------- Spielfiguren generieren Ende ----------
