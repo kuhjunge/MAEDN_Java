@@ -15,7 +15,8 @@ public class MAEDNWuerfel {
 	* @param high - Die höchste Zahl
 	* @return Eine Zufallszahl zwischen den angegebenen low - high Werten
 	*/
-	private static int zufallszahl(double low, double high) {
+	private static int zufallszahl(double low, double high)
+	{
 		double rndd = Math.round(Math.random() * (high - low) + low);
 		int value = new Double(rndd).intValue();
 		return value;

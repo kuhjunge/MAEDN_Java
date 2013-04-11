@@ -12,7 +12,7 @@ public class MAEDNGame {
 	private MAEDNSpieler sp4 = new MAEDNSpieler(4);
 	private int spieleramzug = 0;
 	
-	MAEDNWuerfel wuerfel = new MAEDNWuerfel(); // Würfel
+	private MAEDNWuerfel wuerfel = new MAEDNWuerfel(); // Würfel
 	private List<String> zugList = new ArrayList<String>(); // Liste für die Upzudatenen Figuren
 	
 	// Methoden
@@ -80,10 +80,10 @@ public class MAEDNGame {
     	return spieleramzug;
     }
     
-	/**
+	/* *
 	* Führt ein Kommando aus  (Funktion für Debug)
 	* @param com - Kommando (String)
-	*/
+	* /
     public void com(String com)
     {
     	System.out.println("Kommando");
@@ -94,6 +94,7 @@ public class MAEDNGame {
 			System.out.println("Kommando 2");
     	}
     }
+    */
     
 	/**
 	* Der Zug wird ausgeführt (KLICK auf Spielfigur)
@@ -189,7 +190,7 @@ public class MAEDNGame {
 	* @param val - Der Wert des Feldes
 	* @return Array mit Farbe und ID der rauszuschmeißenden Figur
 	*/
-    public int[] kickcheck(int req, int val)
+    private int[] kickcheck(int req, int val)
     { //req = request -> derjenige, der den Zug gemacht hat
     	int[]ret = new int[2];
     	ret[0] = 0; // Farbe der rauszuschmeißenden Figur

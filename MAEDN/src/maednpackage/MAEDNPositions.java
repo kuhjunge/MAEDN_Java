@@ -30,7 +30,7 @@ public class MAEDNPositions {
 	private ImageIcon imgWuerfel6 = new ImageIcon(this.getClass().getResource("images/wuerfel6.png")); // Würfel Glow
     
 	// Spielobjekt
-	MAEDNGame maedn = new MAEDNGame(); // Spielmechanik aufrufen
+	private MAEDNGame maedn = new MAEDNGame(); // Spielmechanik aufrufen
 	
 	// Rot
 	private JLabel lblMRed1 = null;
@@ -357,14 +357,14 @@ public class MAEDNPositions {
 		lblWuerfel.setLocation(wuerfelplace(maedn.getspieleramzug()));
 	}
 	
-	/**
+	/* *
 	* Gibt ein Komando (CHEAT) an die Game Klasse weiter
 	* @param com - Kommando
-	*/
+	* /
 	public void parsecom(String com)
 	{
 		maedn.com(com);
-	}
+	} */
 	
 	/**
 	* Gibt die Position des Würfels zurück

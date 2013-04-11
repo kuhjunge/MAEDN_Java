@@ -7,14 +7,11 @@ import java.awt.Color; // Farben
 import java.awt.event.MouseAdapter; // Mausevent
 import java.awt.event.MouseEvent;
 import java.awt.Point;
-import javax.swing.JTextField;
-import javax.swing.JButton; // Mausevent
-
 
 public class MAEDNWindow {
 
 	private JFrame frmMenschaergereDich; // Der Frame in dem das Programm angezeigt wird
-	private JTextField textFieldCom; // Das Komando Textfeld
+	//private JTextField textFieldCom; // Das Komando Textfeld
 
 	/**
 	 * Launch the application.
@@ -281,7 +278,7 @@ public class MAEDNWindow {
 		lblBackground.setBounds(0, 0, 580, 580); // Größe
 		frmMenschaergereDich.getContentPane().add(lblBackground); // An den Frame anheften
 		
-		// Textfeld für Debugfunktionen
+	/*	// Textfeld für Debugfunktionen
 		textFieldCom = new JTextField();
 		textFieldCom.addMouseListener(new MouseAdapter() {
 			@Override
@@ -292,5 +289,6 @@ public class MAEDNWindow {
 		textFieldCom.setBounds(379, 550, 94, 22);
 		frmMenschaergereDich.getContentPane().add(textFieldCom);
 		textFieldCom.setColumns(10);
+		*/
 	}
 }

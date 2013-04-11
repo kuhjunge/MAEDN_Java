@@ -59,23 +59,23 @@ public class MAEDNFigur {
 	
 	/**
 	* Kollisionserkennung der Figur
-	* @param id - Die ID des zu überprüfenden Feldes
+	* @param feldid - Die ID des zu überprüfenden Feldes
 	* @return True wenn Kollision / False wenn keine Kollision
 	*/
-	public boolean collision(int value)
+	public boolean collision(int feldid)
 	{
-		if (value == convertToFarbe(fFortschritt)) return true;
+		if (feldid == convertToFarbe(fFortschritt)) return true;
 		else return false;
 	}
 	
 	/**
 	* Kollisionserkennung der Figur (Raw - Farbintern)
-	* @param value - Die ID des zu überprüfenden Feldes
+	* @param feldid - Die ID des zu überprüfenden Feldes
 	* @return True wenn Kollision / False wenn keine Kollision mit eigener Farbe
 	*/
-	public boolean collisionRaw(int value)
+	public boolean collisionRaw(int feldid)
 	{
-		if (value == fFortschritt) return true;
+		if (feldid == fFortschritt) return true;
 		else return false;
 	}
 	
