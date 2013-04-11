@@ -65,7 +65,7 @@ public class MAEDNGame {
     		spieleramzug++;
     		if (spieleramzug == 5) spieleramzug = 1; // Korrektur, dass nach Spieler 4 Spieler 1 kommt
     		wuerfel.resetVersuche();
-    		//wuerfel.resetWurf();
+    		wuerfel.resetWurf();
     		wuerfel.enable();
     		System.out.println("Würfel wird gelöscht -> Blockiersicherung");
     	}	

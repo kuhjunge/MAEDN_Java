@@ -6,7 +6,7 @@ public class MAEDNWuerfel {
 	private int wurf = 0; // Hier wird der Würfelwert gespeichert
 	private int wurfzaehler = 0; // Jeder Wurf wird mitgezählt
 	private int wurfversuch = 0; // Anzahl der Versuche 
-	private boolean forceenable = false;
+	private boolean forceenable = false; // Momentan Variablenleiche (nur vorhanden da in Doku erwähnt)
 	
 	// Methoden
 	/**
@@ -30,7 +30,7 @@ public class MAEDNWuerfel {
 		if (wurf == 0 /* || forceenable - Bugfix*/) wurf = zufallszahl(1,6); // Würfelzahl zurück geben
 		wurfzaehler++;
 		wurfversuch++;
-		forceenable = false;
+		//forceenable = false;
 		System.out.println("Würfel: "+ wurf + " Versuch" + wurfversuch + " Gesamt: " + wurfzaehler);
 	}
 	
@@ -93,6 +93,6 @@ public class MAEDNWuerfel {
 	public void enable()
 	{
 		// Kurzfristig unbrauchbar gemacht, da sie im Spiel einen Bug erzeugt.
-		forceenable = true;
+		//forceenable = true;
 	}
 }
