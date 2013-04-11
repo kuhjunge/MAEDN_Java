@@ -245,6 +245,7 @@ public class MAEDNSpieler {
 		boolean wurfmoeglich = true;
 		int startZahl = getFigurFortRaw(id);
 		int wurfZahl = startZahl + wurf;// Die theoretisch zu ziehende Zahl ermitteln
+		if(startZahl == 0) wurfZahl = 1;
         int minzahl = 44;
         for (int i = 0; i < 4; i++)
         {

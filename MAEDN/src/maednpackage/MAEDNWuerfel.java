@@ -27,7 +27,7 @@ public class MAEDNWuerfel {
 	*/
 	public void wurf()
 	{
-		if (wurf == 0 || forceenable) wurf = zufallszahl(1,6); // Würfelzahl zurück geben
+		if (wurf == 0 /* || forceenable - Bugfix*/) wurf = zufallszahl(1,6); // Würfelzahl zurück geben
 		wurfzaehler++;
 		wurfversuch++;
 		forceenable = false;
@@ -92,6 +92,7 @@ public class MAEDNWuerfel {
 	*/
 	public void enable()
 	{
+		// Kurzfristig unbrauchbar gemacht, da sie im Spiel einen Bug erzeugt.
 		forceenable = true;
 	}
 }
