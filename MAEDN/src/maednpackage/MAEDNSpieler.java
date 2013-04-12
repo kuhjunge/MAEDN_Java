@@ -253,7 +253,7 @@ public class MAEDNSpieler {
                 minzahl = getFigurFortRaw(i);
         }
         
-		//Wenn über 44 = Zug nicht möglich
+		//Wenn Wurf unverändert
     	if (wurfZahl == startZahl) 
     	{
     		wurfmoeglich =false;
